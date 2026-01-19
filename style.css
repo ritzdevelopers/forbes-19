@@ -1,0 +1,30 @@
+/* Google Fonts Imports */
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;600;700;800&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Baskervville:ital@0;1&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Libre+Baskerville:wght@400;700&display=swap');
+
+/* Font Family Classes */
+.font-open-sans {
+    font-family: 'Open Sans', sans-serif;
+}
+
+.font-baskervville {
+    font-family: 'Baskervville', serif;
+}
+
+.font-libre-baskerville {
+    font-family: 'Libre Baskerville', serif;
+}
+
+/* List Marker Styling */
+.master-plan-list li::marker {
+    color: #CF4422;
+    font-size: 25px;
+}
+
+.master-plan-list li {
+    color: inherit;
+    list-style-type: disc;
+    list-style-position: outside;
+}
+

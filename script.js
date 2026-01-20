@@ -429,9 +429,21 @@ function initAnimations() {
   // Initialize Lenis after GSAP is ready
   initLenis();
 
+  // Check if mobile device for reduced motion
+  const isMobile = window.innerWidth < 768;
+  const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const shouldAnimate = !prefersReducedMotion;
+
+  // Common animation settings
+  const defaultDuration = isMobile ? 0.6 : 0.8;
+  const defaultEase = 'power2.out';
+
+  // Get all sections for reliable section finding
+  const allSections = document.querySelectorAll('section');
+
   // Parallax effect for hero background (Section 1)
   const heroImage = document.getElementById('slider-image');
-  if (heroImage) {
+  if (heroImage && shouldAnimate) {
     gsap.to(heroImage, {
       yPercent: 30,
       ease: 'none',
@@ -439,13 +451,346 @@ function initAnimations() {
         trigger: '.s1',
         start: 'top top',
         end: 'bottom top',
-        scrub: true
+        scrub: true,
+        invalidateOnRefresh: true
+      }
+    });
+  }
+
+  // Hero title animation
+  const heroTitle = document.getElementById('slider-title');
+  if (heroTitle && shouldAnimate) {
+    gsap.from(heroTitle, {
+      opacity: 0,
+      y: 50,
+      duration: 1,
+      ease: 'power3.out',
+      scrollTrigger: {
+        trigger: heroTitle,
+        start: 'top 80%',
+        toggleActions: 'play none none none'
+      }
+    });
+  }
+
+  // Section 2 - Overview Section
+  const section2 = document.querySelector('section:nth-of-type(2)');
+  if (section2 && shouldAnimate) {
+    const section2Content = section2.querySelectorAll('h2, p, img, .flex.flex-col.gap-2');
+    gsap.utils.toArray(section2Content).forEach((el, index) => {
+      gsap.from(el, {
+        opacity: 0,
+        y: 40,
+        duration: defaultDuration,
+        ease: defaultEase,
+        scrollTrigger: {
+          trigger: el,
+          start: 'top 85%',
+          toggleActions: 'play none none none'
+        },
+        delay: index * 0.1
+      });
+    });
+  }
+
+  // Section 3 - Pillars of a Better Life
+  const section3 = document.querySelector('section:nth-of-type(3)');
+  if (section3 && shouldAnimate) {
+    // Heading animation
+    const section3Heading = section3.querySelector('p.font-baskervville');
+    if (section3Heading) {
+      gsap.from(section3Heading, {
+        opacity: 0,
+        y: 30,
+        duration: defaultDuration,
+        ease: defaultEase,
+        scrollTrigger: {
+          trigger: section3Heading,
+          start: 'top 85%',
+          toggleActions: 'play none none none'
+        }
+      });
+    }
+
+    // Pillar cards animation with stagger
+    const pillarCards = section3.querySelectorAll('.flex.flex-col.justify-between.items-center.gap-4');
+    if (pillarCards.length > 0) {
+      gsap.from(pillarCards, {
+        opacity: 0,
+        y: 50,
+        duration: defaultDuration,
+        ease: defaultEase,
+        stagger: 0.2,
+        scrollTrigger: {
+          trigger: pillarCards[0],
+          start: 'top 85%',
+          toggleActions: 'play none none none'
+        }
+      });
+    }
+
+    // Curated Amenities heading
+    const curatedHeading = section3.querySelector('h3.font-baskervville');
+    if (curatedHeading) {
+      gsap.from(curatedHeading, {
+        opacity: 0,
+        y: 30,
+        duration: defaultDuration,
+        ease: defaultEase,
+        scrollTrigger: {
+          trigger: curatedHeading,
+          start: 'top 85%',
+          toggleActions: 'play none none none'
+        }
+      });
+    }
+
+    // Amenity cards animation
+    const amenityCards = section3.querySelectorAll('.amenity-card');
+    if (amenityCards.length > 0) {
+      gsap.from(amenityCards, {
+        opacity: 0,
+        y: 60,
+        scale: 0.95,
+        duration: defaultDuration,
+        ease: defaultEase,
+        stagger: 0.15,
+        scrollTrigger: {
+          trigger: amenityCards[0],
+          start: 'top 85%',
+          toggleActions: 'play none none none'
+        }
+      });
+    }
+  }
+
+  // Section 4 - Location Advantage
+  const section4 = Array.from(allSections).find(section => 
+    section.textContent.includes('Location Advantage') || 
+    section.classList.toString().includes('BF4423')
+  );
+  if (section4 && shouldAnimate) {
+    // Heading animation
+    const section4Headings = section4.querySelectorAll('h3, p.font-baskervville');
+    gsap.from(section4Headings, {
+      opacity: 0,
+      y: 30,
+      duration: defaultDuration,
+      ease: defaultEase,
+      stagger: 0.1,
+      scrollTrigger: {
+        trigger: section4Headings[0],
+        start: 'top 85%',
+        toggleActions: 'play none none none'
+      }
+    });
+
+    // Location images and grid
+    const locationContent = section4.querySelectorAll('img, .flex.flex-col');
+    gsap.from(locationContent, {
+      opacity: 0,
+      y: 40,
+      duration: defaultDuration,
+      ease: defaultEase,
+      stagger: 0.15,
+      scrollTrigger: {
+        trigger: locationContent[0],
+        start: 'top 85%',
+        toggleActions: 'play none none none'
+      }
+    });
+  }
+
+  // Section 5 - Layouts & Planning
+  const section5 = document.querySelector('section:nth-of-type(5)');
+  if (section5 && shouldAnimate) {
+    // Heading animation
+    const section5Heading = section5.querySelector('h3');
+    if (section5Heading) {
+      gsap.from(section5Heading, {
+        opacity: 0,
+        y: 30,
+        duration: defaultDuration,
+        ease: defaultEase,
+        scrollTrigger: {
+          trigger: section5Heading,
+          start: 'top 85%',
+          toggleActions: 'play none none none'
+        }
+      });
+    }
+
+    // Master plan image and list
+    const masterPlanContent = section5.querySelectorAll('img, h4, ul');
+    gsap.from(masterPlanContent, {
+      opacity: 0,
+      x: isMobile ? 0 : -30,
+      duration: defaultDuration,
+      ease: defaultEase,
+      stagger: 0.1,
+      scrollTrigger: {
+        trigger: masterPlanContent[0],
+        start: 'top 85%',
+        toggleActions: 'play none none none'
+      }
+    });
+  }
+
+  // Section 6 - Unit Layout
+  const section6 = Array.from(allSections).find(section => 
+    section.textContent.includes('Unit Layout') || 
+    section.classList.toString().includes('F7EEE6')
+  );
+  if (section6 && shouldAnimate) {
+    // Heading animation
+    const section6Heading = section6.querySelector('h3');
+    if (section6Heading) {
+      gsap.from(section6Heading, {
+        opacity: 0,
+        y: 30,
+        duration: defaultDuration,
+        ease: defaultEase,
+        scrollTrigger: {
+          trigger: section6Heading,
+          start: 'top 85%',
+          toggleActions: 'play none none none'
+        }
+      });
+    }
+
+    // Layout images
+    const layoutImages = section6.querySelectorAll('img[alt*="BHK"]');
+    gsap.from(layoutImages, {
+      opacity: 0,
+      y: 50,
+      scale: 0.95,
+      duration: defaultDuration,
+      ease: defaultEase,
+      stagger: 0.2,
+      scrollTrigger: {
+        trigger: layoutImages[0],
+        start: 'top 85%',
+        toggleActions: 'play none none none'
+      }
+    });
+
+    // Button animation
+    const section6Button = section6.querySelector('button');
+    if (section6Button) {
+      gsap.from(section6Button, {
+        opacity: 0,
+        y: 20,
+        duration: defaultDuration,
+        ease: defaultEase,
+        scrollTrigger: {
+          trigger: section6Button,
+          start: 'top 85%',
+          toggleActions: 'play none none none'
+        }
+      });
+    }
+  }
+
+  // Section 7 - Trust & Governance
+  const section7 = document.querySelector('section:nth-of-type(7)');
+  if (section7 && shouldAnimate) {
+    // Text content animation
+    const section7Text = section7.querySelectorAll('h2, p');
+    gsap.from(section7Text, {
+      opacity: 0,
+      y: 30,
+      duration: defaultDuration,
+      ease: defaultEase,
+      stagger: 0.1,
+      scrollTrigger: {
+        trigger: section7Text[0],
+        start: 'top 85%',
+        toggleActions: 'play none none none'
+      }
+    });
+
+    // Image animation
+    const section7Image = section7.querySelector('img');
+    if (section7Image) {
+      gsap.from(section7Image, {
+        opacity: 0,
+        scale: 0.9,
+        duration: defaultDuration + 0.2,
+        ease: defaultEase,
+        scrollTrigger: {
+          trigger: section7Image,
+          start: 'top 85%',
+          toggleActions: 'play none none none'
+        }
+      });
+    }
+  }
+
+  // Section 8 - Featured Project (Form Section)
+  const section8 = document.getElementById('featured-project');
+  if (section8 && shouldAnimate) {
+    // Form container
+    const formContainer = section8.querySelector('#sec4-form');
+    if (formContainer) {
+      gsap.from(formContainer, {
+        opacity: 0,
+        x: isMobile ? 0 : -50,
+        duration: defaultDuration,
+        ease: defaultEase,
+        scrollTrigger: {
+          trigger: formContainer,
+          start: 'top 85%',
+          toggleActions: 'play none none none'
+        }
+      });
+    }
+
+    // Cards animation
+    const section8Cards = section8.querySelectorAll('#sec4-card1, #sec4-card2, #sec4-card3');
+    gsap.from(section8Cards, {
+      opacity: 0,
+      y: 50,
+      scale: 0.95,
+      duration: defaultDuration,
+      ease: defaultEase,
+      stagger: 0.15,
+      scrollTrigger: {
+        trigger: section8Cards[0],
+        start: 'top 85%',
+        toggleActions: 'play none none none'
+      }
+    });
+  }
+
+  // Footer animations
+  const footer = document.getElementById('footer');
+  if (footer && shouldAnimate) {
+    const footerContent = footer.querySelectorAll('#footer-row1 > *, #footer-row2 > *');
+    gsap.from(footerContent, {
+      opacity: 0,
+      y: 30,
+      duration: defaultDuration,
+      ease: defaultEase,
+      stagger: 0.1,
+      scrollTrigger: {
+        trigger: footer,
+        start: 'top 90%',
+        toggleActions: 'play none none none'
       }
     });
   }
 
   // Refresh ScrollTrigger after all animations are set up
   ScrollTrigger.refresh();
+
+  // Refresh on resize for responsive behavior
+  let resizeTimer;
+  window.addEventListener('resize', () => {
+    clearTimeout(resizeTimer);
+    resizeTimer = setTimeout(() => {
+      ScrollTrigger.refresh();
+    }, 250);
+  });
 }
 
 // Initialize animations when DOM is ready
@@ -453,4 +798,102 @@ if (document.readyState === 'loading') {
   document.addEventListener('DOMContentLoaded', initAnimations);
 } else {
   initAnimations();
+}
+
+// ============================================
+// Amenity Cards Hover Animation with GSAP
+// ============================================
+function initAmenityCardsHover() {
+  if (typeof gsap === 'undefined') {
+    setTimeout(initAmenityCardsHover, 100);
+    return;
+  }
+
+  const amenityCards = document.querySelectorAll('.amenity-card');
+
+  if (!amenityCards.length) {
+    return;
+  }
+
+  // Process each card individually
+  amenityCards.forEach(card => {
+    const overlay = card.querySelector('.amenity-hover-overlay');
+    const title = card.querySelector('.amenity-title');
+    
+    if (!overlay || !title) return;
+
+    // Set initial state
+    // Overlay starts from bottom (hidden below)
+    gsap.set(overlay, {
+      y: '100%', // Start from bottom (fully below the card)
+      opacity: 0
+    });
+    
+    // Title starts visible at bottom
+    gsap.set(title, {
+      y: '0%',
+      opacity: 1
+    });
+
+    // Create hover timeline: title hides (slides down) -> overlay shows (slides up)
+    const hoverTimeline = gsap.timeline({ paused: true });
+    hoverTimeline
+      .to(title, {
+        y: '100%', // Slide title down to hide
+        opacity: 0,
+        duration: 0.2,
+        ease: 'power2.in'
+      })
+      .to(overlay, {
+        y: '0%', // Slide overlay up to show (starts after title is completely hidden)
+        opacity: 1,
+        duration: 0.3,
+        ease: 'power2.out'
+      }, '-=0.1'); // Start slightly before title animation ends for faster transition
+
+    // Create leave timeline: overlay hides (slides down) -> title shows (slides up)
+    const leaveTimeline = gsap.timeline({ paused: true });
+    leaveTimeline
+      .to(overlay, {
+        y: '100%', // Slide overlay down to hide
+        opacity: 0,
+        duration: 0.2,
+        ease: 'power2.in'
+      })
+      .to(title, {
+        y: '0%', // Slide title up to show (starts after overlay is completely hidden)
+        opacity: 1,
+        duration: 0.3,
+        ease: 'power2.out'
+      }, '-=0.1'); // Start slightly before overlay animation ends for faster transition
+
+    card.addEventListener('mouseenter', function() {
+      // Stop leave timeline if it's playing and restart hover timeline
+      if (leaveTimeline.isActive()) {
+        leaveTimeline.kill();
+        // Reset to starting state for hover
+        gsap.set(overlay, { y: '100%', opacity: 0 });
+        gsap.set(title, { y: '0%', opacity: 1 });
+      }
+      hoverTimeline.restart();
+    });
+
+    card.addEventListener('mouseleave', function() {
+      // Stop hover timeline if it's playing and restart leave timeline
+      if (hoverTimeline.isActive()) {
+        hoverTimeline.kill();
+        // Reset to starting state for leave
+        gsap.set(title, { y: '100%', opacity: 0 });
+        gsap.set(overlay, { y: '0%', opacity: 1 });
+      }
+      leaveTimeline.restart();
+    });
+  });
+}
+
+// Initialize amenity cards hover when DOM is ready
+if (document.readyState === 'loading') {
+  document.addEventListener('DOMContentLoaded', initAmenityCardsHover);
+} else {
+  initAmenityCardsHover();
 }

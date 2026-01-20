@@ -16,7 +16,8 @@
     font-family: 'Libre Baskerville', serif;
 }
 
-/* List Marker Styling */
+@media (min-width: 1024px) {
+    /* List Marker Styling */
 .master-plan-list li::marker {
     color: #CF4422;
     font-size: 25px;
@@ -27,4 +28,24 @@
     list-style-type: disc;
     list-style-position: outside;
 }
+}
 
+@media (min-width: 1370px) {
+    .container-widh {
+        width: 1200px !important;
+    }
+}
+@media (min-width: 1300px) {
+    .img1-width {
+        width: 595px !important;
+    }
+    .img2-width {
+        width: 624px !important;
+    }
+}
+
+@media (max-width:424px) {
+    .card-padding{
+        padding-bottom: 0px !important;
+    }
+}

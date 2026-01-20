@@ -39,13 +39,13 @@
     <div id="main-navbar"
         class="w-full flex justify-between  absolute top-0 left-0 z-50 pr-4 xl:pr-20 xl:pl-10 transition-all duration-300 py-2 px-4">
         <!-- Left Side Logo Container  -->
-        <div class="flex items-center w-[202px] h-auto">
+        <div class="flex items-center md:w-[202px] w-[126px] h-auto">
             <!-- By DEfault It Wil Show  -->
-            <img id="default-logo" src="img/f3-logo.png" alt="logo" class=" transition-opacity duration-300" />
+            <img id="default-logo" src="img/logo/white-logo1.png" alt="logo" class=" transition-opacity duration-300" />
 
             <!-- It Will SHow After Scroll  -->
-            <img id="scroll-logo" src="img/f3-logo2.png" alt="logo"
-                class=" overflow-hidden transition-opacity duration-300 hidden w-[121px]" />
+            <img id="scroll-logo" src="img/logo/white-logo2.png" alt="logo"
+                class=" overflow-hidden transition-opacity duration-300 hidden w-[156px]" />
         </div>
 
         <!-- Desktop Navigation Links Container  -->
@@ -83,7 +83,7 @@
     </div>
 
     <!-- Mobile Menu Slider -->
-    <div id="mobile-menu" class="fixed top-0 left-0 w-full h-full bg-white z-40 hidden">
+    <div id="mobile-menu" class="fixed top-0 left-0 w-full h-full bg-white z-50 hidden">
         <div class="w-full h-full flex flex-col justify-center items-center px-8">
             <ul class="flex flex-col justify-center items-center gap-8 text-black">
                 <li class="mobile-menu-item">
@@ -127,40 +127,42 @@
         </div>
     </div>
 
-    <!-- Section 1  -->
-    <section class="s1 w-full lg:min-h-[90vh] md:min-h-[90vh] relative overflow-hidden flex items-center pl-5 md:pl-10">
+   <!-- Section 1  -->
+   <section class="s1 w-full lg:min-h-[90vh]  min-h-[90vh] relative overflow-hidden flex items-center pl-5 md:pl-10">
 
-        <!-- Left Side Container  -->
-        <div class="relative z-20 flex flex-col gap-4 leading-20">
-            <h1 id="slider-title"
-                class="text-[17px] sm:text-[24px] md:text-[36px] font-[700] font-libre-baskerville text-[#BF4423] w-full max-w-[450px] break-words">
-            </h1>
+    <!-- Left Side Container  -->
+    <div class="relative z-20 flex flex-col gap-4 leading-20 pt-10">
+      <h1 id="slider-title"
+        class="  md:text-[54px] text-[36px] font-[400] font-libre-baskerville text-[#ffffff] w-full max-w-[450px] break-words">
+        Clean Air Residences
+      </h1>
 
-        </div>
+    </div>
 
-        <!-- Absolute Position Image Slider  -->
-        <div id="slider-image-container" class="w-full h-full absolute top-0 left-0 z-0">
-            <img id="slider-image" src="img/s1/FGPI_B3.jpg" alt="slider"
-                class="w-full h-full object-cover transition-opacity duration-1000" />
-        </div>
+    <!-- Absolute Position Image Slider  -->
+    <div id="slider-image-container" class="w-full h-full absolute top-0 left-0 z-0">
+      <img id="slider-image" src="img/s1/hero-1.png" alt="slider"
+        class="w-full h-full object-cover transition-opacity duration-1000 hidden md:block" />
+        <img id="slider-image" src="img/s1/ele_tall.jpg" alt="slider"
+        class="w-full h-full object-cover transition-opacity duration-1000 block md:hidden" />
+    </div>
 
-        <!-- Absolute Position Slider Pagination Div  -->
-        <div id="slider-pagination"
-            class="absolute bottom-8 left-1/2 transform -translate-x-1/2 z-20 flex flex-row gap-1">
-            <!-- Dots will be generated dynamically -->
-        </div>
+    <!-- Absolute Position Slider Pagination Div  -->
+    <div id="slider-pagination" class="absolute bottom-8 left-1/2 transform -translate-x-1/2 z-20 flex flex-row gap-1">
+      <!-- Dots will be generated dynamically -->
+    </div>
 
-
-        <div class="absolute inset-0 bg-gradient-to-r from-black to-transparent z-10"></div>
-    </section>
+   
+  </section>
 
 
     <!-- Section 2  -->
-    <section class="w-full flex justify-center items-center px-4 sm:px-6 md:px-10 lg:px-20 py-8 sm:py-12 md:py-16 lg:py-[70px] border-b-[1px] border-[#D9D9D9]">
+    <section
+        class="w-full flex justify-center items-center px-4 sm:px-6 md:px-10 lg:px-20 py-8 sm:py-12 md:py-16 lg:py-[70px] border-b-[1px] border-[#D9D9D9]">
         <!-- Centered Align Container  -->
         <div class="w-full 2xl:w-[1200px]">
             <!-- Row 1  -->
-            <div class="flex flex-col lg:flex-row justify-between items-center gap-6 lg:gap-0">
+            <div class="flex flex-col-reverse lg:flex-row justify-between items-center gap-6 xl:gap-0">
 
                 <!-- Left Side Image Container  -->
                 <div class="w-full lg:w-[570px]">
@@ -170,14 +172,17 @@
                 <div class="w-full lg:w-[570px] flex flex-col gap-3 items-center text-center">
                     <p class="font-[600] text-[14px] sm:text-[16px] text-[#BF4423] font-open-sans">Overview</p>
 
-                    <h2 class="font-[400] text-[24px] sm:text-[28px] md:text-[34px] font-baskervville">FAB LUXE Residences</h2>
+                    <h2 class="font-[400] text-[24px] sm:text-[28px] xl:text-[34px] font-baskervville">FAB LUXE
+                        Residences</h2>
 
-                    <p class="font-[400] text-[14px] sm:text-[16px] text-center font-open-sans">FAB LUXE Residences is India's first
+                    <p class="font-[400] text-[14px] xl:text-[16px] text-center font-open-sans">FAB LUXE Residences is
+                        India's first
                         AQI-managed
                         luxury
                         residential development, created for those who value certainty, wellness, and long-term
                         performance over surface indulgence.</p>
-                    <p class="font-[400] text-[14px] sm:text-[16px] text-center font-open-sans">Designed as a low-density, future-ready
+                    <p class="font-[400] text-[14px] xl:text-[16px] text-center font-open-sans">Designed as a
+                        low-density, future-ready
                         living
                         environment, FAB
                         LUXE integrates clean air systems, thoughtful planning, and governed execution into everyday
@@ -189,14 +194,16 @@
                         <!-- Row 1  -->
                         <div class="flex justify-between items-center gap-4 sm:gap-8 md:gap-[80px]">
                             <div class="flex flex-col gap-2 text-center w-full sm:w-[120px] md:w-[143px]">
-                                <p class="font-[700] text-[36px] sm:text-[42px] md:text-[50px] font-libre-baskerville">64+</p>
+                                <p class="font-[700] text-[36px] xl:text-[50px] font-libre-baskerville">
+                                    64+</p>
                                 <p class="font-[600] text-[12px] sm:text-[14px] font-open-sans">Curated Amenities</p>
                             </div>
 
                             <div class="w-[1px] h-[30px] sm:h-[38px] bg-[#AFAFAF] flex-shrink-0"></div>
 
                             <div class="flex flex-col gap-2 text-center w-full sm:w-[120px] md:w-[143px]">
-                                <p class="font-[700] text-[36px] sm:text-[42px] md:text-[50px] font-libre-baskerville">3&4</p>
+                                <p class="font-[700] text-[36px] xl:text-[50px] font-libre-baskerville">
+                                    3&4</p>
                                 <p class="font-[600] text-[12px] sm:text-[14px] font-open-sans">BHK Residences</p>
                             </div>
                         </div>
@@ -204,14 +211,16 @@
                         <!-- Row 2  -->
                         <div class="flex justify-between items-center text-center gap-4 sm:gap-8 md:gap-[80px]">
                             <div class="flex flex-col gap-2 text-center w-full sm:w-[120px] md:w-[143px]">
-                                <p class="font-[700] text-[36px] sm:text-[42px] md:text-[50px] font-libre-baskerville">100%</p>
+                                <p class="font-[700] text-[36px] xl:text-[50px] font-libre-baskerville">
+                                    100%</p>
                                 <p class="font-[600] text-[12px] sm:text-[14px] font-open-sans">Fresh-Air Supply</p>
                             </div>
 
                             <div class="w-[1px] h-[30px] sm:h-[38px] bg-[#AFAFAF] flex-shrink-0"></div>
 
                             <div class="flex flex-col gap-2 text-center w-full sm:w-[120px] md:w-[143px]">
-                                <p class="font-[700] text-[36px] sm:text-[42px] md:text-[50px] font-libre-baskerville">11-ft</p>
+                                <p class="font-[700] text-[36px] xl:texLocat-[50px] font-libre-baskerville">
+                                    11-ft</p>
                                 <p class="font-[600] text-[12px] sm:text-[14px] font-open-sans">Tall Ceilings</p>
                             </div>
                         </div>
@@ -223,43 +232,55 @@
     </section>
 
     <!-- Section 3  -->
-    <section class="w-full flex justify-center items-center px-4 sm:px-6 md:px-10 lg:px-20 py-8 sm:py-12 md:py-16 lg:py-[70px]">
+    <section
+        class="w-full flex justify-center items-center px-4 sm:px-6 md:px-10 lg:px-20 py-8 sm:py-12 md:py-16 lg:py-[70px]">
         <!-- Center Align Container  -->
-        <div class="w-full 2xl:w-[1200px] flex flex-col gap-8 sm:gap-10 md:gap-12">
+        <div class="w-full container-widh flex flex-col gap-8 sm:gap-10 md:gap-12">
             <!-- Row 1  -->
             <div class="w-full flex flex-col justify-center items-center gap-4 sm:gap-6">
                 <!-- Heading Text  -->
                 <div class="flex justify-center items-center text-center">
-                    <p class="font-[400] text-[24px] sm:text-[28px] md:text-[34px] font-baskervville">Pillars of a Better Life</p>
+                    <p class="font-[400] text-[24px] sm:text-[28px] md:text-[34px] font-baskervville">Pillars of a
+                        Better Life</p>
                 </div>
 
                 <!-- Images Cards  -->
-                <div class="flex flex-col md:flex-row justify-center items-start gap-8 md:gap-12 lg:gap-[12rem]">
+                <div class="flex flex-col md:flex-row justify-center items-start md:gap-0 gap-8  lg:gap-12 xl:gap-[12rem]">
+
                     <div class="flex flex-col justify-between items-center gap-4">
-                        <div><img src="img/s3/s3-r1-i1.png" alt="" class="w-[150px] sm:w-[170px] md:w-[193px] h-auto"></div>
+                        <div><img src="img/s3/s3-r1-i1.png" alt="" class="w-[150px] sm:w-[170px] md:w-[193px] h-auto">
+                        </div>
                         <div class="flex flex-col justify-center items-center gap-2 text-center">
-                            <h2 class="font-[400] text-[20px] sm:text-[22px] md:text-[24px] font-baskervville">AQI-managed living</h2>
-                            <p class="font-[400] text-[14px] sm:text-[16px] w-full sm:w-[220px] md:w-[250px] font-open-sans">
+                            <h2 class="font-[400] text-[20px]  xl:text-[24px] font-baskervville">
+                                AQI-managed living</h2>
+                            <p
+                                class="font-[400] text-[14px] lg:text-[16px] w-full sm:w-[220px] lg:w-[250px] font-open-sans">
                                 Indoor air quality managed, so every breath feels calmer.
                             </p>
                         </div>
                     </div>
                     <div class="flex flex-col justify-between items-center gap-4">
-                        <div><img src="img/s3/s3-r1-i2.png" alt="" class="w-[150px] sm:w-[170px] md:w-[193px] h-auto"></div>
+                        <div><img src="img/s3/s3-r1-i2.png" alt="" class="w-[150px] sm:w-[170px] md:w-[193px] h-auto">
+                        </div>
                         <div class="flex flex-col justify-center items-center gap-2 text-center">
-                            <h2 class="font-[400] text-[20px] sm:text-[22px] md:text-[24px] font-baskervville">Luxurious Comforts</h2>
-                            <p class="font-[400] text-[14px] sm:text-[16px] w-full sm:w-[220px] md:w-[250px] font-open-sans">
-                                Thoughtful spaces, refined finishes, and comfort that stays effortless.
+                            <h2 class="font-[400]  text-[20px]  xl:text-[24px] font-baskervville">Luxurious
+                                Comforts</h2>
+                            <p
+                                class="font-[400] text-[14px] lg:text-[16px] w-full sm:w-[220px] lg:w-[250px] font-open-sans">
+                                Thoughtful spaces and  refined finishes that stay effortless.
                             </p>
                         </div>
                     </div>
 
                     <div class="flex flex-col justify-between items-center gap-4">
-                        <div><img src="img/s3/s3-r1-i3.png" alt="" class="w-[150px] sm:w-[170px] md:w-[193px] h-auto"></div>
+                        <div><img src="img/s3/s3-r1-i3.png" alt="" class="w-[150px] sm:w-[170px] md:w-[193px] h-auto">
+                        </div>
                         <div class="flex flex-col justify-center items-center gap-2 text-center">
-                            <h2 class="font-[400] text-[20px] sm:text-[22px] md:text-[24px] font-baskervville">Serviced Living</h2>
-                            <p class="font-[400] text-[14px] sm:text-[16px] w-full sm:w-[220px] md:w-[250px] font-open-sans">
-                                3 years of complimentary maintenance and concierge services, for effortless daily
+                            <h2 class="font-[400] text-[20px]  xl:text-[24px] font-baskervville">Serviced
+                                Living</h2>
+                            <p
+                                class="font-[400] text-[14px] lg:text-[16px] w-full sm:w-[220px] lg:w-[250px] font-open-sans">
+                                3 years of complimentary concierge services, for effortless daily
                                 living.
                             </p>
                         </div>
@@ -271,12 +292,13 @@
             <div class="w-full flex flex-col lg:flex-row justify-between items-center gap-6 lg:gap-4">
 
                 <!-- Left Side Container  -->
-                <div class="flex flex-col md:flex-row gap-4 h-full w-full lg:w-auto">
+                <div class="flex flex-col md:flex-row gap-4 h-full w-full lg:w-auto justify-between">
                     <!-- Left Side  -->
                     <div class="flex flex-col gap-5 items-center h-full w-full md:w-auto">
                         <!-- Row 1  -->
                         <div class="flex flex-col text-center gap-3 w-full md:w-[230px] h-auto md:h-[247px]">
-                            <h3 class="font-[400] text-[24px] sm:text-[28px] md:text-[34px] font-baskervville">Curated Amenities</h3>
+                            <h3 class="font-[400] text-[24px] sm:text-[28px] md:text-[34px] font-baskervville">Curated
+                                Amenities</h3>
                             <p class="font-[400] text-[14px] sm:text-[16px] font-open-sans">
                                 Thoughtfully planned amenities that are designed to feel calm, purposeful, and
                                 effortlessly premium.
@@ -284,32 +306,97 @@
                         </div>
 
                         <!-- Row 2  -->
-                        <div class="w-full md:w-[260px] relative">
-                            <img src="img/s3/s3-r2-i1.png" alt="" class="w-full h-auto">
-                            <p
-                                class="absolute whitespace-nowrap bottom-4 left-1/2 transform -translate-x-1/2 font-[700] text-[14px] sm:text-[16px] text-white font-baskervville">
-                                Co-Working Suites</p>
+                        <div class="amenity-card w-full md:w-[240px] h-full xl:w-[260px] relative overflow-hidden rounded-[20px] 
+                        lg:h-[339px]
+                        xl:h-auto
+                        ">
+                            <img src="img/s3/cowork.jpg" alt="" class="w-full h-full">
+                            <!-- Absolute Position Hover Visible Container  -->
+                            <div
+                                class="amenity-hover-overlay absolute inset-0 w-full h-full z-10 bg-[#BF4423CC] rounded-[20px] cursor-pointer">
+                                <div
+                                    class="w-full h-full relative flex flex-col justify-end items-center text-center pb-6 px-2 md:gap-3">
+                                    <p
+                                        class="font-[700] text-[18px] text-white font-baskervville">
+                                        Co-Working Spaces</p>
+                                    <p
+                                        class="font-[400] text-[14px]  text-center text-white font-open-sans">
+                                        Thoughtfully
+                                        Technology-enabled work suites with focus pods, boardroom capability, and
+                                        sound-controlled zones. Designed for professionals who want productivity without
+                                        commute stress, it supports deep work, calls, and meetings in a quiet setting
+                                        that protects balance, privacy, and routine..</p>
+                                </div>
+                            </div>
+
+                            <!-- Absolute Position Title That Hide On Hover  -->
+                             <div class="amenity-title absolute inset-0 w-full h-full z-20 flex justify-center items-end pb-4 text-center pointer-events-none">
+                                <p class="font-[700] text-[16px] text-white font-baskervville">Co-Working Spaces</p>
+                             </div>
                         </div>
                     </div>
 
                     <!-- Right Side  -->
                     <div class="flex flex-col gap-5 items-center h-full w-full md:w-auto">
-                        <div class="relative w-full md:w-[452px]">
-                            <img src="img/s3/s3-r2-i2.png" alt="" class="w-full h-auto md:h-[247px] object-cover">
-                            <p
-                                class="absolute whitespace-nowrap bottom-4 left-1/2 transform -translate-x-1/2 font-[700] text-[14px] sm:text-[16px] text-white font-baskervville">
-                                Whiskey Vault</p>
-                        </div>
-                        <div class="relative w-full md:w-[452px]">
-                            <img src="img/s3/s3-r2-i3.png" alt="" class="w-full h-auto md:h-[338px] object-cover">
+
+
+                        <!-- First Amenity Card  -->
+                        <div class="amenity-card relative w-full md:w-[100%] xl:w-[452px] cursor-pointer overflow-hidden rounded-[20px]">
+                            <img src="img/s3/theme-garden.jpg" alt="" class="w-full h-auto md:h-[247px] object-cover">
+                            <!-- Absolute Position Hover Visible Container  -->
                             <div
-                                class="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 flex flex-col gap-3 md:gap-5 items-center text-center w-[90%] md:w-[297px] px-2">
-                                <p class="font-[700] text-[16px] sm:text-[18px] md:text-[20px] text-white font-baskervville">
-                                    Sports & Arts Academy</p>
-                                <p class="font-[400] text-[12px] sm:text-[14px] md:text-[16px] text-center text-white font-open-sans">Thoughtfully
-                                    planned amenities
-                                    that are designed to feel calm, purposeful, and effortlessly premium.</p>
+                                class="amenity-hover-overlay absolute inset-0 w-full h-full z-10 bg-[#BF4423CC] rounded-[20px] cursor-pointer">
+                                <div
+                                    class="w-full h-full relative flex flex-col justify-end items-center text-center pb-6 px-2 md:gap-3">
+                                    <p
+                                        class="font-[700] text-[16px] sm:text-[18px] md:text-[20px] text-white font-baskervville">
+                                        Theme Gardens</p>
+                                    <p
+                                        class="font-[400] text-[13px] md:text-[14px]  text-center text-white font-open-sans">
+                                        Thoughtfully
+                                        A series of purpose-led landscapes designed around distinct moods and
+                                        experiences. From quiet reflection zones to sensory planting and shaded trails,
+                                        these gardens encourage mindful movement, pause, and everyday connection with
+                                        nature, not decorative greens that look good only from a distance.</p>
+                                </div>
                             </div>
+
+
+
+                            
+                            <!-- Absolute Position Title That Hide On Hover  -->
+                            <div class="amenity-title absolute inset-0 w-full h-full z-20 flex justify-center items-end pb-4 text-center pointer-events-none">
+                                <p class="font-[700] text-[16px] text-white font-baskervville">Theme Gardens</p>
+                             </div>
+                        </div>
+
+                        <!-- Second Amenity Card  -->
+                        <div class="amenity-card relative w-full md:w-[100%] xl:w-[452px] overflow-hidden rounded-[20px]">
+                            <img src="img/s3/sports.jpg" alt="" class="w-full h-auto md:h-[312px] lg:h-[338px] object-cover">
+                            <!-- Absolute Position Hover Visible Container  -->
+                            <div
+                                class="amenity-hover-overlay absolute inset-0 w-full h-full z-10 bg-[#BF4423CC] rounded-[20px] cursor-pointer">
+                                <div
+                                    class="w-full h-full relative flex flex-col justify-end items-center text-center pb-6 px-2 md:gap-3">
+                                    <p
+                                        class="font-[700] text-[16px] sm:text-[18px] md:text-[20px] text-white font-baskervville">
+                                        Sports & Arts Academy</p>
+                                    <p
+                                        class="font-[400] text-[13px] md:text-[14px]  text-center text-white font-open-sans">
+                                        Thoughtfully
+                                        Sports & Arts Academy
+                                        A professionally run academy with coached programs in sports and creative arts
+                                        for children. Built for structured development, discipline, and discovery, it
+                                        goes beyond play to nurture talent, confidence, teamwork, and long-term growth
+                                        within a safe, supervised environment.
+                                    </p>
+                                </div>
+                            </div>
+
+                            <!-- Absolute Position Title That Hide On Hover  -->
+                            <div class="amenity-title absolute inset-0 w-full h-full z-20 flex justify-center items-end pb-4 text-center pointer-events-none">
+                                <p class="font-[700] text-[16px] text-white font-baskervville">Sports & Arts Academy</p>
+                             </div>
                         </div>
                     </div>
                 </div>
@@ -319,25 +406,83 @@
                     <!-- Top Container -->
                     <div class="flex justify-between items-center gap-4 md:gap-5 h-auto md:h-[400px]">
                         <!-- Left Container  -->
-                        <div class="relative h-full w-full md:w-auto"><img src="img/s3/s3-r2-i4.png" alt="" class="w-full md:w-[245px] h-auto md:h-full">
-                            <p
-                                class="absolute whitespace-nowrap bottom-4 left-1/2 transform -translate-x-1/2 font-[700] text-[14px] sm:text-[16px] text-white font-baskervville">
-                                Cigar Lounge</p>
+                        <div class="amenity-card relative h-full w-full md:w-auto overflow-hidden rounded-[20px]"><img src="img/s3/club-house.jpg" alt=""
+                                class="w-full md:w-[341px] lg:w-[245px] h-auto md:h-full">
+                            <!-- Absolute Position Hover Visible Container  -->
+                            <div
+                                class="amenity-hover-overlay absolute inset-0 w-full h-full z-10 bg-[#BF4423CC] rounded-[20px] cursor-pointer">
+                                <div
+                                    class="w-full h-full relative flex flex-col justify-end items-center text-center card-padding pb-6 px-2 md:gap-3">
+                                    <p
+                                        class="font-[700] text-[16px] sm:text-[18px] md:text-[20px] text-white font-baskervville">
+                                        Lifestyle Clubhouse</p>
+                                    <p
+                                        class="font-[400] text-[13px] md:text-[14px]  text-center text-white font-open-sans">
+                                        Thoughtfully
+                                        A refined clubhouse planned as an extension of your lifestyle, not a noisy
+                                        common hall. Zoned for leisure, conversations, and private gatherings, it
+                                        prioritizes comfort, privacy, and curated experiences, creating a calm social
+                                        rhythm without crowding or constant activity.</p>
+                                </div>
+                            </div>
+
+
+                             <!-- Absolute Position Title That Hide On Hover  -->
+                             <div class="amenity-title absolute inset-0 w-full h-full z-20 flex justify-center items-end pb-4 text-center pointer-events-none">
+                                <p class="font-[700] text-[16px] text-white font-baskervville">Lifestyle Clubhouse</p>
+                             </div>
                         </div>
                         <!-- Right Container  -->
-                        <div class="relative h-full w-full md:w-auto"><img src="img/s3/s3-r2-i5.png" alt="" class="w-full md:w-[245px] h-auto md:h-full">
-                            <p
-                                class="absolute whitespace-nowrap bottom-4 left-1/2 transform -translate-x-1/2 font-[700] text-[14px] sm:text-[16px] text-white font-baskervville">
-                                Private Amphitheatre</p>
+                        <div class="amenity-card relative h-full w-full md:w-auto overflow-hidden rounded-[20px]"><img src="img/s3/infinity-pool.jpg" alt=""
+                                class="w-full md:w-[341px] lg:w-[245px] h-auto md:h-full">
+                            <!-- Absolute Position Hover Visible Container  -->
+                            <div
+                                class="amenity-hover-overlay absolute inset-0 w-full h-full z-10 bg-[#BF4423CC] rounded-[20px] cursor-pointer">
+                                <div
+                                    class="w-full h-full relative flex flex-col justify-end items-center text-center card-padding pb-6 px-2 md:gap-3">
+                                    <p
+                                        class="font-[700] text-[16px] sm:text-[18px] md:text-[20px] text-white font-baskervville">
+                                        Infinity Pool</p>
+                                    <p
+                                        class="font-[400] text-[13px] md:text-[14px]  text-center text-white font-open-sans">
+                                        Thoughtfully
+                                        A resort-style infinity pool designed for serene swims and unhurried downtime.
+                                        Clean sightlines, controlled access, and a composed deck environment make it
+                                        ideal for morning laps or relaxed evenings, delivering a private-retreat feel
+                                        rather than a high-traffic facility.</p>
+                                </div>
+                            </div>
+
+
+                             <!-- Absolute Position Title That Hide On Hover  -->
+                             <div class="amenity-title absolute inset-0 w-full h-full z-20 flex justify-center items-end pb-4 text-center pointer-events-none">
+                                <p class="font-[700] text-[16px] text-white font-baskervville">Infinity Pool</p>
+                             </div>
                         </div>
                     </div>
 
                     <!-- Bottom Container  -->
-                    <div class="relative h-auto md:h-[185px]">
-                        <img src="img/s3/s3-r2-i6.png" alt="" class="w-full h-auto md:h-full">
-                        <p
-                            class="absolute whitespace-nowrap bottom-4 left-1/2 transform -translate-x-1/2 font-[700] text-[14px] sm:text-[16px] text-white font-baskervville">
-                            Reading Haven</p>
+                    <div class="amenity-card relative h-auto lg:h-[185px] overflow-hidden rounded-[20px]">
+                        <img src="img/s3/wellness-center.jpg" alt="" class="w-full h-auto md:h-full">
+                        <!-- Absolute Position Hover Visible Container  -->
+                        <div class="amenity-hover-overlay absolute inset-0 w-full h-full z-10 bg-[#BF4423CC] rounded-[20px] cursor-pointer">
+                            <div class="w-full h-full relative flex flex-col justify-end items-center text-center pb-6 px-2 md:gap-3">
+                                <p
+                                    class="font-[700] text-[16px] sm:text-[18px] md:text-[20px] text-white font-baskervville">
+                                    Wellness Center</p>
+                                <p
+                                    class="font-[400] text-[13px] md:text-[14px]  text-center text-white font-open-sans">
+                                    Thoughtfully
+                                    An integrated wellness destination for recovery, balance, and long-term vitality.
+                                    With curated therapy and restorative spaces, it enables consistent self-care as part
+                                    of daily life, supporting stress relief, physical rejuvenation, and mental clarity
+                                    without leaving the community.</p>
+                            </div>
+                        </div>
+                         <!-- Absolute Position Title That Hide On Hover  -->
+                         <div class="amenity-title absolute inset-0 w-full h-full z-20 flex justify-center items-end pb-4 text-center pointer-events-none">
+                            <p class="font-[700] text-[16px] text-white font-baskervville"> Wellness Center</p>
+                         </div>
                     </div>
                 </div>
             </div>
@@ -347,14 +492,19 @@
 
 
     <!-- Section 4  -->
-    <section class="w-full flex justify-center items-center px-4 sm:px-6 md:px-10 lg:px-20 py-8 sm:py-12 md:py-16 lg:py-[70px] bg-[#BF4423]">
+    <section
+        class="w-full flex justify-center items-center px-4 sm:px-6 md:px-10 lg:px-20 py-8 sm:py-12 md:py-16 lg:py-[70px] bg-[#BF4423]">
         <!-- Centered Align Container  -->
-        <div class="w-full flex flex-col gap-8 sm:gap-12 md:gap-[4rem] 2xl:max-w-[1200px]">
+        <div class="w-full flex flex-col gap-8 sm:gap-12 md:gap-[4rem] container-widh">
             <!-- Row 1  -->
             <div class="flex flex-col gap-2 text-center items-center">
-                <h3 class="font-[400] text-[24px] sm:text-[28px] md:text-[34px] text-white font-baskervville">Location Advantage</h3>
-                <p class="font-[400] text-[18px] sm:text-[20px] md:text-[24px] text-white font-baskervville">Sector 4, Greater Noida West</p>
-                <p class="font-[400] text-[14px] sm:text-[16px] text-white max-w-full md:max-w-[800px] px-4 font-open-sans">FAB LUXE is strategically
+                <h3 class="font-[400] text-[24px] sm:text-[28px] md:text-[34px] text-white font-baskervville">Location
+                    Advantage</h3>
+                <p class="font-[400] text-[18px] sm:text-[20px] md:text-[24px] text-white font-baskervville">Sector 4,
+                    Greater Noida West</p>
+                <p
+                    class="font-[400] text-[14px] sm:text-[16px] text-white max-w-full md:max-w-[800px] px-4 font-open-sans">
+                    FAB LUXE is strategically
                     located in Sector
                     4, Greater
                     Noida West, an area shaped by infrastructure-led growth rather than speculative development.</p>
@@ -363,43 +513,51 @@
             <!-- Row 2  -->
             <div class="flex flex-col lg:flex-row justify-between items-center gap-6">
                 <!-- Left Container  -->
-                <div class="w-full lg:w-[403px] h-auto lg:h-[396px] flex justify-center items-center border-[1px] border-white p-4"><img
-                        src="img/s3/location.png" alt="" class="w-full max-w-[363px] h-auto"></div>
+                <div
+                    class="w-[80%] md:w-[300px] lg:w-[500px] xl:w-[403px] h-auto xl:h-[396px] flex justify-center items-center border-[1px] border-white p-4">
+                    <img src="img/s3/location.png" alt="" class="w-full   xl:max-w-[363px] h-auto"></div>
 
                 <!-- Center Align Container  -->
-                <div class="w-full lg:w-auto flex justify-center"><img src="img/s3/location2.png" alt="" class="w-full max-w-[346px] lg:w-[346px] h-auto"></div>
+                <div class="  flex justify-center"><img src="img/s3/location2.png" alt="" class=" 
+                    w-[80%]
+                    md:w-[300px] xl:max-w-[346px] xl:w-[346px] h-auto"></div>
 
                 <!-- Right Container   -->
-                <div class="w-full lg:w-[410px] h-auto lg:h-[394px]">
+                <div class="w-full xl:w-[410px] h-auto  lg:w-[610px] xl:h-[394px]">
                     <!-- Row 1  -->
-                    <div class="border-b-[1px] border-white w-full flex flex-col sm:flex-row justify-between min-h-[200px] sm:min-h-0 sm:h-[50%]">
+                    <div
+                        class="border-b-[1px] border-white w-full flex flex-row justify-between min-h-[200px] sm:min-h-0 sm:h-[50%]">
                         <div
-                            class="w-full sm:w-[50%] flex flex-col justify-center items-center gap-2 text-center border-b-[1px] sm:border-b-0 sm:border-r-[1px] border-white p-4">
+                            class="w-full sm:w-[50%] flex flex-col justify-center items-center gap-2 text-center  border-r-[1px] border-white p-4">
                             <img src="img/s3/gr1.png" alt="" class="w-[40px] sm:w-[45px] h-auto">
-                            <p class="font-[400] text-[14px] sm:text-[16px] text-white font-open-sans">Direct access to major arterial
+                            <p class="font-[400] text-[14px] sm:text-[16px] text-white font-open-sans">Direct access to
+                                major arterial
                                 road networks
                             </p>
                         </div>
                         <div class="w-full sm:w-[50%] flex flex-col justify-center items-center gap-2 text-center p-4">
                             <img src="img/s3/gr2.png" alt="" class="w-[40px] sm:w-[45px] h-auto">
-                            <p class="font-[400] text-[14px] sm:text-[16px] text-white font-open-sans">Upcoming and evolving metro
+                            <p class="font-[400] text-[14px] sm:text-[16px] text-white font-open-sans">Upcoming and
+                                evolving metro
                                 connectivity
                             </p>
                         </div>
                     </div>
                     <!-- Row 2  -->
-                    <div class="w-full flex flex-col sm:flex-row justify-between min-h-[200px] sm:min-h-0 sm:h-[50%]">
+                    <div class="w-full flex flex-row justify-between min-h-[200px] sm:min-h-0 sm:h-[50%]">
                         <div
-                            class="w-full sm:w-[50%] flex flex-col justify-center items-center gap-2 text-center border-b-[1px] sm:border-b-0 sm:border-r-[1px] border-white p-4">
+                            class="w-full sm:w-[50%] flex flex-col justify-center items-center gap-2 text-center  border-r-[1px] border-white p-4">
                             <img src="img/s3/gr3.png" alt="" class="w-[40px] sm:w-[45px] h-auto">
-                            <p class="font-[400] text-[14px] sm:text-[16px] text-white font-open-sans">Direct access to major arterial
+                            <p class="font-[400] text-[14px] sm:text-[16px] text-white font-open-sans">Direct access to
+                                major arterial
                                 road
                                 networks
                             </p>
                         </div>
                         <div class="w-full sm:w-[50%] flex flex-col justify-center items-center gap-2 text-center p-4">
                             <img src="img/s3/gr4.png" alt="" class="w-[40px] sm:w-[45px] h-auto">
-                            <p class="font-[400] text-[14px] sm:text-[16px] text-white font-open-sans">Upcoming and evolving metro
+                            <p class="font-[400] text-[14px] sm:text-[16px] text-white font-open-sans">Upcoming and
+                                evolving metro
                                 connectivity
                             </p>
                         </div>
@@ -409,12 +567,15 @@
     </section>
 
     <!-- Section 5  -->
-    <section class="w-full flex justify-center items-center px-4 sm:px-6 md:px-10 lg:px-20 py-8 sm:py-12 md:py-16 lg:py-[70px]">
-        <div class="w-full 2xl:max-w-[1200px] flex flex-col justify-center items-center gap-6 sm:gap-8">
+    <section
+        class="w-full flex justify-center items-center px-4 sm:px-6 md:px-10 lg:px-20 py-8 sm:py-12 md:py-16 lg:py-[70px]">
+        <div class="w-full container-widh flex flex-col justify-center items-center gap-6 sm:gap-8">
             <!-- Heading Text  -->
             <div class="w-full flex flex-col gap-2 text-center items-center">
-                <h3 class="font-[400] text-[24px] sm:text-[28px] md:text-[34px] font-baskervville">Layouts & Planning</h3>
-                <p class="font-[400] text-[14px] sm:text-[16px] font-open-sans px-4">FAB LUXE offers thoughtfully designed residences that
+                <h3 class="font-[400] text-[24px] sm:text-[28px] md:text-[34px] font-baskervville">Layouts & Planning
+                </h3>
+                <p class="font-[400] text-[14px] sm:text-[16px] font-open-sans px-4">FAB LUXE offers thoughtfully
+                    designed residences that
                     balance space,
                     privacy, and functionality.</p>
             </div>
@@ -422,22 +583,27 @@
             <!-- Main Content  -->
             <div class="flex flex-col lg:flex-row justify-between items-center gap-6 lg:gap-12 w-full">
                 <!-- Left Side Container  -->
-                <div class="border-[1px] w-full lg:w-[810px] border-[#CF442242]">
+                <div class="border-[1px] w-full lg:w-[65%] xl:w-[810px] border-[#CF442242]">
                     <img src="img/s4/master-plan.png" alt="" class="w-full h-auto ">
                 </div>
 
                 <!-- Right Side Container  -->
-                <div class="flex flex-col gap-4 w-full lg:w-[calc(100%-810px)]">
-                    <h4 class="font-[400] text-[24px] sm:text-[26px] md:text-[30px] font-baskervville">Master Plan</h4>
-                    <ul class="flex flex-col gap-3 sm:gap-4 font-[400] text-[14px] sm:text-[16px] pl-4 master-plan-list">
-                        <li class="list-disc font-open-sans">13-acre integrated community in Sector 4 </li>
-                        <li class="list-disc font-open-sans">11 towers planned with balanced spacing</li>
-                        <li class="list-disc font-open-sans">Four homes per floor for privacy</li>
-                        <li class="list-disc font-open-sans">Two-level basement parking keeps surface clear</li>
-                        <li class="list-disc font-open-sans">Pedestrian-first greens form the central spine</li>
-                        <li class="list-disc font-open-sans">Vehicular routes separated from walking zones</li>
-                        <li class="list-disc font-open-sans">Multiple entry exits for smoother traffic flow</li>
+                <div class="flex flex-col gap-6 lg:gap-2 xl:gap-4 w-full lg:w-[35%] xl:w-[calc(100%-810px)]">
+                    <h4 class="font-[400] text-[24px] sm:text-[26px] md:text-[30px] 
+                    
+                    text-center lg:text-left
+                    font-baskervville">Master Plan</h4>
+                    <ul
+                        class="lg:flex lg:flex-col grid grid-cols-2 gap-4 lg:gap-0  xl:gap-4 font-[400] text-[14px] sm:text-[16px] pl-4 master-plan-list">
+                        <li class="list-disc font-open-sans">13-acre integrated community in Sector 4. </li>
+                        <li class="list-disc font-open-sans">11 towers planned with balanced spacing. </li>
+                        <li class="list-disc font-open-sans">Four homes per floor for privacy. </li>
+                        <li class="list-disc font-open-sans">Two-level basement parking keeps surface clear.   </li>
+                        <li class="list-disc font-open-sans">Pedestrian-first greens form the central spine .</li>
+                        <li class="list-disc font-open-sans">Vehicular routes separated from walking zones.</li>
+                        <li class="list-disc font-open-sans">Multiple entry exits for smoother traffic flow.</li>
                     </ul>
+                   
                 </div>
             </div>
         </div>
@@ -445,81 +611,100 @@
 
 
     <!-- Section 6  -->
-    <section class="w-full bg-[#F7EEE6] flex justify-center items-center px-4 sm:px-6 md:px-10 lg:px-20 py-8 sm:py-12 md:py-16 lg:py-[70px]">
+    <section
+        class="w-full bg-[#F7EEE6] flex justify-center items-center px-4 sm:px-6 md:px-10 lg:px-20 py-8 sm:py-12 md:py-16 lg:py-[70px]">
         <!-- Centered Align Container  -->
-        <div class="w-full 2xl:max-w-[1200px] flex flex-col justify-center items-center gap-8 sm:gap-10">
+        <div class="w-full container-widh flex flex-col justify-center items-center gap-6 sm:gap-8 md:gap-10">
             <!-- Heading Text  -->
-            <div class="w-full flex flex-col gap-2 text-center items-center">
-                <h3 class="font-[400] text-[24px] sm:text-[28px] md:text-[34px] font-baskervville">Unit Layout</h3>
-                <p class="font-[400] text-[14px] sm:text-[16px] font-open-sans px-4">See floor plans designed for light, flow, and privacy.
+            <div class="w-full flex flex-col gap-2 text-center items-center px-2 sm:px-4">
+                <h3 class="font-[400] text-[22px] sm:text-[24px] md:text-[28px] lg:text-[34px] font-baskervville">Unit Layout</h3>
+                <p class="font-[400] text-[13px] sm:text-[14px] md:text-[16px] font-open-sans max-w-full sm:max-w-[600px] md:max-w-none">See floor plans designed for light,
+                    flow, and privacy.
                 </p>
             </div>
 
             <!-- Main Content  -->
-            <div class="flex flex-col justify-center items-center gap-6 sm:gap-8 w-full">
+            <div class="flex flex-col justify-center items-center gap-5 sm:gap-6 md:gap-8 w-full">
                 <!-- Top Images Card Container  -->
-                <div class="flex flex-col md:flex-row justify-between items-center gap-6 w-full">
+                <div class="flex flex-col lg:flex-row justify-center md:justify-between items-center gap-5 sm:gap-6 w-full">
                     <!-- Left Side Container  -->
-                    <div class="flex flex-col gap-2 items-center w-full md:w-auto">
-                        <img src="img/s6/3bhk.png" alt="" class="w-full max-w-[595px] md:w-[595px] h-auto">
-                        <p class="font-[600] text-[16px] sm:text-[18px] font-open-sans">3 BHK + STUDY</p>
+                    <div class="flex flex-col gap-2 sm:gap-3 items-center w-full md:w-auto">
+                        <img src="img/s6/3bhk.png" alt="3 BHK + STUDY Floor Plan" 
+                            class="w-full md:w-[400px] lg:w-full xl:w-[540px]    2xl:w-full h-auto object-cover">
+                        <p class="font-[600] text-[14px] sm:text-[15px] md:text-[16px] lg:text-[18px] font-open-sans text-center">3 BHK + STUDY</p>
                     </div>
-                    <div class="flex flex-col gap-2 items-center w-full md:w-auto">
-                        <img src="img/s6/4bhk.png" alt="" class="w-full max-w-[624px] md:w-[624px] h-auto">
-                        <p class="font-[600] text-[16px] sm:text-[18px] font-open-sans">4 BHK + STUDY</p>
+                    <div class="flex flex-col gap-2 sm:gap-3 items-center w-full md:w-auto">
+                        <img src="img/s6/4bhk.png" alt="4 BHK + STUDY Floor Plan" 
+                            class="w-full md:w-[400px] lg:w-full xl:w-[560px]  2xl:w-full h-auto object-cover">
+
+
+
+
+                        <p class="font-[600] text-[14px] sm:text-[15px] md:text-[16px] lg:text-[18px] font-open-sans text-center">4 BHK + STUDY</p>
                     </div>
                 </div>
 
 
                 <!-- Bottom Button Container  -->
-                <div class="flex justify-center items-center w-full"><button
-                        class="w-full sm:w-[209px] h-[43px] bg-[#CF4422] font-[700] text-[14px] sm:text-[15px] text-white rounded-[4px] font-open-sans">Request
-                        more
-                        details</button>
+                <div class="flex justify-center items-center w-full px-4 sm:px-0 mt-2 sm:mt-0">
+                    <button
+                        class="w-full sm:w-[209px] h-[42px] sm:h-[43px] bg-[#CF4422] hover:bg-[#BF4423] font-[700] text-[13px] sm:text-[14px] md:text-[15px] text-white rounded-[4px] font-open-sans transition-colors duration-200">
+                        Request more details
+                    </button>
                 </div>
             </div>
         </div>
     </section>
 
     <!-- Section 7  -->
-    <section class="w-full flex justify-center items-center px-4 sm:px-6 md:px-10 lg:px-20 py-8 sm:py-12 md:py-16 lg:py-[70px]">
+    <section
+        class="w-full flex justify-center items-center px-4 sm:px-6 md:px-10 xl:px-20 py-8 sm:py-12 md:py-16 lg:py-[70px]">
 
         <!-- Centered Align Container   -->
-        <div class="w-full 2xl:max-w-[1200px] flex flex-col justify-center items-center gap-8 sm:gap-12 md:gap-14">
+        <div class="w-full container-widh flex flex-col justify-center items-center gap-8 sm:gap-12 md:gap-14">
             <!-- Row 1  -->
-            <div class="w-full flex flex-col lg:flex-row justify-between gap-6 lg:gap-8">
+            <div class="w-full flex flex-col lg:flex-row justify-between gap-6 xl:gap-8">
                 <!-- Left Side Container  -->
-                <div class="flex flex-col gap-4 sm:gap-6 text-center items-center w-full lg:w-[calc(100%-570px)] justify-center px-4">
-                    <h2 class="font-[400] text-[24px] sm:text-[28px] md:text-[34px] font-baskervville">Trust & Governance</h2>
-                    <p class="font-[400] text-[14px] sm:text-[16px] font-open-sans">Luxury, at its highest level, is built on
+                <div
+                    class="flex flex-col gap-4 xl:gap-6 text-center items-center w-full lg:w-[50%] xl:w-[calc(100%-570px)] justify-center xl:px-4">
+                    <h2 class="font-[400] text-[24px] sm:text-[28px] md:text-[34px] font-baskervville">Trust &
+                        Governance</h2>
+                    <p class="font-[400] text-[14px] sm:text-[16px] font-open-sans">Luxury, at its highest level, is
+                        built on
                         certainty.</p>
-                    <p class="font-[400] text-[14px] sm:text-[16px] font-open-sans">FAB LUXE Residences operates under a rare framework
+                    <p class="font-[400] text-[14px] sm:text-[16px] font-open-sans">FAB LUXE Residences operates under a
+                        rare framework
                         of legal oversight and institutional execution, offering buyers a level of confidence that goes
                         beyond design, amenities, or location.</p>
-                    <p class="font-[400] text-[14px] sm:text-[16px] font-open-sans">The project is monitored by the <span
-                            class="font-[700]">Supreme Court of India</span>, ensuring transparency, accountability, and
+                    <p class="font-[400] text-[14px] sm:text-[16px] font-open-sans">The project is monitored by the
+                        <span class="font-[700]">Supreme Court of India</span>, ensuring transparency, accountability,
+                        and
                         adherence to defined processes throughout development. Execution is entrusted to <span
                             class="font-[700]">NBCC (India) Ltd</span>, one of India's most respected government-owned
                         construction and project management enterprises.</p>
-                    <p class="font-[400] text-[14px] sm:text-[16px] font-open-sans">This dual layer of judicial monitoring and
+                    <p class="font-[400] text-[14px] sm:text-[16px] font-open-sans">This dual layer of judicial
+                        monitoring and
                         institutional execution significantly reduces delivery risk, strengthens legal clarity, and
                         reinforces long-term value.</p>
-                    <p class="font-[400] text-[14px] sm:text-[16px] font-open-sans">Here, trust is not a promise. <br> It is built into
+                    <p class="font-[400] text-[14px] sm:text-[16px] font-open-sans">Here, trust is not a promise. <br>
+                        It is built into
                         the foundation.</p>
                 </div>
 
                 <!-- Right Side Container   -->
-                <div class="w-full lg:w-auto flex justify-center"><img src="img/s7/s7-i1.png" alt="" class="w-full max-w-[570px] lg:w-[570px] h-auto"></div>
-            </div>
+                <div class="flex justify-center overflow-hidden rounded-[20px]">
+                    <img
+                        src="img/s8/clb_new.jpg" alt="" class="lg:w-[570px] h-auto  rounded-[20px]"></div>
+            </div>  
         </div>
     </section>
 
     <!-- Section  8  -->
     <section id="featured-project"
-        class="s4 w-full min-h-[90vh] relative overflow-hidden lg:pb-[70px] pb-[35px] flex flex-col items-center px-4 sm:px-6 md:px-10 lg:px-0 md:gap-6 gap-8 sm:gap-10">
+        class="s4 w-full   relative overflow-hidden lg:pb-[70px] pb-[35px] flex flex-col items-center px-4 sm:px-6 md:px-10 xl:px-20 md:gap-6 gap-8 sm:gap-10">
 
         <!-- Row 2  -->
-        <div id="sec4-row2" class="w-full xlW md:w-[90%] flex flex-col gap-6 ">
+        <div id="sec4-row2" class="w-full container-widh flex flex-col gap-6 ">
             <!-- Div 1  -->
             <div id="sec4-row2-div1" class="w-full flex flex-col lg:flex-row justify-between gap-6">
                 <!-- Left Side Form Container  -->
@@ -645,7 +830,7 @@
             <div id="footer-row1" class="flex flex-col md:flex-row justify-between items-center gap-6">
                 <!-- Col 1  -->
                 <div class="flex justify-center md:justify-start pb-4 md:pb-0">
-                    <img src="img/f3-logo3.png" alt="footer-logo" class="w-[182px] h-auto " />
+                    <img src="img/logo/black-logo1.png" alt="footer-logo" class="w-[182px] h-auto " />
                 </div>
 
                 <!-- Col 2  -->

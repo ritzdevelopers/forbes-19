@@ -7,7 +7,7 @@ function initLenis() {
   if (typeof Lenis !== 'undefined' && typeof gsap !== 'undefined' && typeof ScrollTrigger !== 'undefined') {
     // Register ScrollTrigger plugin
     gsap.registerPlugin(ScrollTrigger);
-    
+
     lenis = new Lenis({
       duration: 1.2,
       easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
@@ -71,12 +71,12 @@ function handleNavbarScroll() {
   const scrollTop = lenis ? lenis.scroll : (window.pageYOffset || document.documentElement.scrollTop);
   const mobileMenuBtn = document.getElementById('mobile-menu-btn');
   const navLinks = document.querySelectorAll('#main-navbar ul li a, #main-navbar ul li button');
-  
+
   if (scrollTop > 50) {
     // User has scrolled down - make navbar fixed at top with black background
     navbar.classList.remove('absolute', 'top-0', 'md:top-0');
     navbar.classList.add('fixed', 'top-0', 'bg-black');
-    
+
     // Animate background color with GSAP
     if (typeof gsap !== 'undefined') {
       gsap.to(navbar, {
@@ -85,11 +85,11 @@ function handleNavbarScroll() {
         ease: 'power2.out'
       });
     }
-    
+
     // Show scroll logo, hide default logo instantly
     defaultLogo.classList.add('hidden');
     scrollLogo.classList.remove('hidden');
-    
+
     // Change text color to white with GSAP
     navLinks.forEach(link => {
       if (typeof gsap !== 'undefined') {
@@ -102,7 +102,7 @@ function handleNavbarScroll() {
         link.style.color = '#ffffff';
       }
     });
-    
+
     // Ensure menu button text is white when navbar has black background
     if (mobileMenuBtn) {
       if (typeof gsap !== 'undefined') {
@@ -116,13 +116,13 @@ function handleNavbarScroll() {
         mobileMenuBtn.classList.remove('text-black');
       }
     }
-    
+
     lastScrollTop = scrollTop;
   } else {
     // User is at the top - restore original position and remove background
     navbar.classList.remove('fixed', 'top-0', 'bg-black');
     navbar.classList.add('absolute', 'top-0', 'md:top-0');
-    
+
     // Animate background to transparent with GSAP
     if (typeof gsap !== 'undefined') {
       gsap.to(navbar, {
@@ -131,11 +131,11 @@ function handleNavbarScroll() {
         ease: 'power2.out'
       });
     }
-    
+
     // Show default logo, hide scroll logo instantly
     scrollLogo.classList.add('hidden');
     defaultLogo.classList.remove('hidden');
-    
+
     // Change text color back to white (for transparent background over hero)
     navLinks.forEach(link => {
       if (typeof gsap !== 'undefined') {
@@ -148,7 +148,7 @@ function handleNavbarScroll() {
         link.style.color = '#ffffff';
       }
     });
-    
+
     // Menu button text should be white when at top (over hero section)
     if (mobileMenuBtn) {
       if (typeof gsap !== 'undefined') {
@@ -162,7 +162,7 @@ function handleNavbarScroll() {
         mobileMenuBtn.classList.remove('text-black');
       }
     }
-    
+
     lastScrollTop = scrollTop;
   }
 }
@@ -175,7 +175,7 @@ if (typeof Lenis !== 'undefined') {
 }
 
 // Initialize on page load
-window.addEventListener('load', function() {
+window.addEventListener('load', function () {
   const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
   if (scrollTop <= 50) {
     defaultLogo.classList.remove('hidden');
@@ -192,7 +192,7 @@ function smoothScrollToSection(targetId) {
 
   // Calculate offset: 15% of viewport height
   const offset = window.innerHeight * 0.15;
-  
+
   // Get target position
   const targetPosition = targetElement.getBoundingClientRect().top + window.pageYOffset - offset;
 
@@ -214,17 +214,17 @@ function smoothScrollToSection(targetId) {
 function initSmoothScrollLinks() {
   // Get all anchor links in navigation (desktop and mobile)
   const navLinks = document.querySelectorAll('a[href^="#"]');
-  
+
   navLinks.forEach(link => {
-    link.addEventListener('click', function(e) {
+    link.addEventListener('click', function (e) {
       const href = this.getAttribute('href');
-      
+
       // Skip if it's just "#" or empty
       if (!href || href === '#') return;
-      
+
       // Prevent default anchor behavior
       e.preventDefault();
-      
+
       // Close mobile menu if open
       const mobileMenu = document.getElementById('mobile-menu');
       if (mobileMenu) {
@@ -233,7 +233,7 @@ function initSmoothScrollLinks() {
           closeMobileMenu();
         }
       }
-      
+
       // Smooth scroll to target section
       smoothScrollToSection(href);
     });
@@ -266,7 +266,7 @@ if (typeof gsap !== 'undefined' && mobileMenu) {
 
 // Toggle mobile menu
 if (mobileMenuBtn) {
-  mobileMenuBtn.addEventListener('click', function() {
+  mobileMenuBtn.addEventListener('click', function () {
     if (!isMenuOpen) {
       openMobileMenu();
     } else {
@@ -277,12 +277,12 @@ if (mobileMenuBtn) {
 
 function openMobileMenu() {
   if (isMenuOpen) return;
-  
+
   isMenuOpen = true;
   mobileMenu.classList.remove('hidden');
   menuIcon.classList.add('hidden');
   closeIcon.classList.remove('hidden');
-  
+
   // Force close icon to be visible
   if (closeIcon) {
     closeIcon.style.display = 'block';
@@ -290,15 +290,15 @@ function openMobileMenu() {
   if (menuIcon) {
     menuIcon.style.display = 'none';
   }
-  
+
   // Change button color to black for white menu background
   if (mobileMenuBtn) {
     mobileMenuBtn.classList.remove('text-white');
     mobileMenuBtn.classList.add('text-black', 'fixed', 'top-6', 'right-6', 'z-[10000]');
   }
-  
+
   document.body.style.overflow = 'hidden'; // Prevent body scroll
-  
+
   // Animate menu from top to bottom with GSAP
   if (typeof gsap !== 'undefined' && mobileMenu) {
     gsap.to(mobileMenu, {
@@ -307,7 +307,7 @@ function openMobileMenu() {
       ease: 'power3.out',
       display: 'block'
     });
-    
+
     // Animate menu items with stagger
     gsap.to(menuItems, {
       opacity: 1,
@@ -325,9 +325,9 @@ function openMobileMenu() {
 
 function closeMobileMenu() {
   if (!isMenuOpen) return;
-  
+
   isMenuOpen = false;
-  
+
   if (menuIcon) {
     menuIcon.classList.remove('hidden');
     menuIcon.style.display = 'block';
@@ -336,15 +336,15 @@ function closeMobileMenu() {
     closeIcon.classList.add('hidden');
     closeIcon.style.display = 'none';
   }
-  
+
   // Restore button color to white and position
   if (mobileMenuBtn) {
     mobileMenuBtn.classList.remove('text-black', 'fixed', 'top-6', 'right-6', 'z-[10000]');
     mobileMenuBtn.classList.add('text-white');
   }
-  
+
   document.body.style.overflow = ''; // Restore body scroll
-  
+
   // Animate menu items out with GSAP
   if (typeof gsap !== 'undefined' && mobileMenu) {
     gsap.to(menuItems, {
@@ -354,14 +354,14 @@ function closeMobileMenu() {
       stagger: 0.05,
       ease: 'power2.in'
     });
-    
+
     // Animate menu from bottom to top
     gsap.to(mobileMenu, {
       y: '-100%',
       duration: 0.5,
       ease: 'power3.in',
       delay: 0.2,
-      onComplete: function() {
+      onComplete: function () {
         mobileMenu.classList.add('hidden');
       }
     });
@@ -373,14 +373,14 @@ function closeMobileMenu() {
 
 // Close menu when clicking on close button at bottom
 if (mobileMenuCloseBtn) {
-  mobileMenuCloseBtn.addEventListener('click', function() {
+  mobileMenuCloseBtn.addEventListener('click', function () {
     closeMobileMenu();
   });
 }
 
 // Close menu when clicking on navigation links (but not the close button)
 if (mobileMenu) {
-  mobileMenu.addEventListener('click', function(e) {
+  mobileMenu.addEventListener('click', function (e) {
     if (e.target.closest('a') && !e.target.closest('#mobile-menu-close-btn')) {
       closeMobileMenu();
     }
@@ -388,7 +388,7 @@ if (mobileMenu) {
 }
 
 // Close menu on window resize if it's larger than lg breakpoint
-window.addEventListener('resize', function() {
+window.addEventListener('resize', function () {
   if (window.innerWidth >= 1024 && isMenuOpen) {
     closeMobileMenu();
   }
@@ -396,7 +396,7 @@ window.addEventListener('resize', function() {
 
 // Prevent scroll when menu is open
 if (mobileMenu) {
-  mobileMenu.addEventListener('touchmove', function(e) {
+  mobileMenu.addEventListener('touchmove', function (e) {
     if (isMenuOpen) {
       e.preventDefault();
     }
@@ -404,7 +404,7 @@ if (mobileMenu) {
 }
 
 // Close menu on escape key
-document.addEventListener('keydown', function(e) {
+document.addEventListener('keydown', function (e) {
   if (e.key === 'Escape' && isMenuOpen) {
     closeMobileMenu();
   }
@@ -565,8 +565,8 @@ function initAnimations() {
   }
 
   // Section 4 - Location Advantage
-  const section4 = Array.from(allSections).find(section => 
-    section.textContent.includes('Location Advantage') || 
+  const section4 = Array.from(allSections).find(section =>
+    section.textContent.includes('Location Advantage') ||
     section.classList.toString().includes('BF4423')
   );
   if (section4 && shouldAnimate) {
@@ -637,8 +637,8 @@ function initAnimations() {
   }
 
   // Section 6 - Unit Layout
-  const section6 = Array.from(allSections).find(section => 
-    section.textContent.includes('Unit Layout') || 
+  const section6 = Array.from(allSections).find(section =>
+    section.textContent.includes('Unit Layout') ||
     section.classList.toString().includes('F7EEE6')
   );
   if (section6 && shouldAnimate) {
@@ -819,7 +819,7 @@ function initAmenityCardsHover() {
   amenityCards.forEach(card => {
     const overlay = card.querySelector('.amenity-hover-overlay');
     const title = card.querySelector('.amenity-title');
-    
+
     if (!overlay || !title) return;
 
     // Set initial state
@@ -828,7 +828,7 @@ function initAmenityCardsHover() {
       y: '100%', // Start from bottom (fully below the card)
       opacity: 0
     });
-    
+
     // Title starts visible at bottom
     gsap.set(title, {
       y: '0%',
@@ -867,7 +867,7 @@ function initAmenityCardsHover() {
         ease: 'power2.out'
       }, '-=0.1'); // Start slightly before overlay animation ends for faster transition
 
-    card.addEventListener('mouseenter', function() {
+    card.addEventListener('mouseenter', function () {
       // Stop leave timeline if it's playing and restart hover timeline
       if (leaveTimeline.isActive()) {
         leaveTimeline.kill();
@@ -878,7 +878,7 @@ function initAmenityCardsHover() {
       hoverTimeline.restart();
     });
 
-    card.addEventListener('mouseleave', function() {
+    card.addEventListener('mouseleave', function () {
       // Stop hover timeline if it's playing and restart leave timeline
       if (hoverTimeline.isActive()) {
         hoverTimeline.kill();
@@ -918,7 +918,7 @@ function initEnquiryPopup() {
 
     // Animate popup content with GSAP if available
     if (typeof gsap !== 'undefined') {
-      gsap.fromTo(popupContent, 
+      gsap.fromTo(popupContent,
         { scale: 0.95, opacity: 0 },
         { scale: 1, opacity: 1, duration: 0.3, ease: 'power2.out' }
       );
@@ -960,7 +960,7 @@ function initEnquiryPopup() {
 
   // Add click event listeners to trigger buttons
   triggerButtons.forEach(button => {
-    button.addEventListener('click', function(e) {
+    button.addEventListener('click', function (e) {
       e.preventDefault();
       openPopup();
     });
@@ -977,7 +977,7 @@ function initEnquiryPopup() {
   }
 
   // Close on Escape key
-  document.addEventListener('keydown', function(e) {
+  document.addEventListener('keydown', function (e) {
     if (e.key === 'Escape' && !popup.classList.contains('hidden')) {
       closePopup();
     }
@@ -1092,14 +1092,14 @@ function hideErrorPopup() {
 // Initialize popup close buttons
 function initPopupCloseButtons() {
   const errorClose = document.getElementById('error-popup-close');
-  
+
   if (errorClose) {
     errorClose.addEventListener('click', hideErrorPopup);
   }
-  
+
   // Close on overlay click
   const errorPopup = document.getElementById('error-popup');
-  
+
   if (errorPopup) {
     errorPopup.addEventListener('click', (e) => {
       if (e.target === errorPopup) {
@@ -1179,19 +1179,19 @@ async function submitToGoogleSheets(form, sheetName, options = {}) {
     // Add Date and Time in Indian format (IST - Indian Standard Time)
     // IST is UTC+5:30
     const now = new Date();
-    
+
     // Get UTC time components
     const utcTime = now.getTime() + (now.getTimezoneOffset() * 60 * 1000);
     // Add IST offset (5 hours 30 minutes = 5.5 * 60 * 60 * 1000 milliseconds)
     const istOffset = 5.5 * 60 * 60 * 1000;
     const istTime = new Date(utcTime + istOffset);
-    
+
     // Format Date as DD/MM/YYYY (Indian format)
     const day = String(istTime.getDate()).padStart(2, '0');
     const month = String(istTime.getMonth() + 1).padStart(2, '0');
     const year = istTime.getFullYear();
     data.Date = `${day}/${month}/${year}`;
-    
+
     // Format Time as HH:MM:SS (24-hour format, IST)
     const hours = String(istTime.getHours()).padStart(2, '0');
     const minutes = String(istTime.getMinutes()).padStart(2, '0');
@@ -1211,14 +1211,14 @@ async function submitToGoogleSheets(form, sheetName, options = {}) {
         params.append(key, data[key]);
       }
     });
-    
+
     // Debug: Log all params being sent
     console.log('Form data being sent:', Object.fromEntries(params));
 
     // Try to send POST request with CORS first (if enabled in Google Apps Script)
     let response;
     let submissionSuccess = false;
-    
+
     try {
       // Try with CORS enabled (if Google Apps Script has CORS headers)
       response = await fetch(GOOGLE_SCRIPT_URL, {
@@ -1300,7 +1300,7 @@ async function submitToGoogleSheets(form, sheetName, options = {}) {
         }
       }
     }
-    
+
     // ALL forms navigate to thank you page after successful submission
     // Small delay to allow any popups to close smoothly
     setTimeout(() => {
@@ -1314,10 +1314,10 @@ async function submitToGoogleSheets(form, sheetName, options = {}) {
 
   } catch (error) {
     console.error('Error submitting form to Google Sheets:', error);
-    
+
     // Hide loader
     hideLoader();
-    
+
     // Show error popup
     const errorMessage = error.message || 'There was an error submitting the form. Please try again later.';
     showErrorPopup(errorMessage);
@@ -1358,9 +1358,9 @@ function initFormSubmission(formSelector, sheetName, options = {}) {
 
   console.log(`Form initialized: ${formSelector} with sheet: ${sheetName}`);
 
-  form.addEventListener('submit', async function(e) {
+  form.addEventListener('submit', async function (e) {
     e.preventDefault();
-    
+
     // Basic validation
     if (!form.checkValidity()) {
       form.reportValidity();
@@ -1368,7 +1368,7 @@ function initFormSubmission(formSelector, sheetName, options = {}) {
     }
 
     console.log(`Submitting form: ${formSelector} to sheet: ${sheetName}`);
-    
+
     // Submit to Google Sheets
     await submitToGoogleSheets(form, sheetName, options);
   });
@@ -1383,9 +1383,9 @@ function initEnquiryForm() {
   const enquiryForm = document.getElementById('enquiry-form');
   if (!enquiryForm) return;
 
-  enquiryForm.addEventListener('submit', async function(e) {
+  enquiryForm.addEventListener('submit', async function (e) {
     e.preventDefault();
-    
+
     // Basic validation
     if (!enquiryForm.checkValidity()) {
       enquiryForm.reportValidity();
@@ -1409,9 +1409,9 @@ function initCallbackForm() {
   const callbackForm = document.getElementById('callback-form');
   if (!callbackForm) return;
 
-  callbackForm.addEventListener('submit', async function(e) {
+  callbackForm.addEventListener('submit', async function (e) {
     e.preventDefault();
-    
+
     // Basic validation
     if (!callbackForm.checkValidity()) {
       callbackForm.reportValidity();
@@ -1435,9 +1435,9 @@ function initFooterEmailForm() {
   const footerForm = document.getElementById('footer-email-form');
   if (!footerForm) return;
 
-  footerForm.addEventListener('submit', async function(e) {
+  footerForm.addEventListener('submit', async function (e) {
     e.preventDefault();
-    
+
     const emailInput = document.getElementById('footer-email-input');
     const email = emailInput.value.trim();
 
@@ -1460,22 +1460,22 @@ function initFooterEmailForm() {
     nameInput.type = 'hidden';
     nameInput.name = 'Name';
     nameInput.value = email.split('@')[0] || 'Footer Subscriber';
-    
+
     const emailInputField = document.createElement('input');
     emailInputField.type = 'hidden';
     emailInputField.name = 'Email';
     emailInputField.value = email;
-    
+
     const phoneInput = document.createElement('input');
     phoneInput.type = 'hidden';
     phoneInput.name = 'Phone';
     phoneInput.value = 'N/A';
-    
+
     const messageInput = document.createElement('input');
     messageInput.type = 'hidden';
     messageInput.name = 'Message';
     messageInput.value = 'Footer Enquiry';
-    
+
     tempForm.appendChild(nameInput);
     tempForm.appendChild(emailInputField);
     tempForm.appendChild(phoneInput);
@@ -1507,4 +1507,8 @@ if (document.readyState === 'loading') {
   document.addEventListener('DOMContentLoaded', initAllForms);
 } else {
   initAllForms();
+}
+
+function handleLocationClick() {
+  window.open('https://maps.app.goo.gl/7veC7zqEsCuR7uLJ6', '_blank');
 }

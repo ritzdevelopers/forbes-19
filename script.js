@@ -1001,6 +1001,200 @@ if (document.readyState === 'loading') {
 }
 
 // ============================================
+// Country Code Data and Functions
+// ============================================
+const countryCodes = [
+  { "country": "India", "code": "+91", "value": "91" },
+  { "country": "Pakistan", "code": "+92", "value": "92" },
+  { "country": "Bangladesh", "code": "+880", "value": "880" },
+  { "country": "Sri Lanka", "code": "+94", "value": "94" },
+  { "country": "Nepal", "code": "+977", "value": "977" },
+  { "country": "China", "code": "+86", "value": "86" },
+  { "country": "Japan", "code": "+81", "value": "81" },
+  { "country": "South Korea", "code": "+82", "value": "82" },
+  { "country": "Thailand", "code": "+66", "value": "66" },
+  { "country": "Malaysia", "code": "+60", "value": "60" },
+  { "country": "Singapore", "code": "+65", "value": "65" },
+  { "country": "Indonesia", "code": "+62", "value": "62" },
+  { "country": "Philippines", "code": "+63", "value": "63" },
+  { "country": "Vietnam", "code": "+84", "value": "84" },
+  { "country": "Afghanistan", "code": "+93", "value": "93" },
+  { "country": "Saudi Arabia", "code": "+966", "value": "966" },
+  { "country": "United Arab Emirates", "code": "+971", "value": "971" },
+  { "country": "Qatar", "code": "+974", "value": "974" },
+  { "country": "Kuwait", "code": "+965", "value": "965" },
+  { "country": "Oman", "code": "+968", "value": "968" },
+  { "country": "Bahrain", "code": "+973", "value": "973" },
+  { "country": "Iran", "code": "+98", "value": "98" },
+  { "country": "Iraq", "code": "+964", "value": "964" },
+  { "country": "Israel", "code": "+972", "value": "972" },
+  { "country": "Jordan", "code": "+962", "value": "962" },
+  { "country": "Lebanon", "code": "+961", "value": "961" },
+  { "country": "Yemen", "code": "+967", "value": "967" },
+  { "country": "United Kingdom", "code": "+44", "value": "44" },
+  { "country": "Germany", "code": "+49", "value": "49" },
+  { "country": "France", "code": "+33", "value": "33" },
+  { "country": "Italy", "code": "+39", "value": "39" },
+  { "country": "Spain", "code": "+34", "value": "34" },
+  { "country": "Netherlands", "code": "+31", "value": "31" },
+  { "country": "Belgium", "code": "+32", "value": "32" },
+  { "country": "Switzerland", "code": "+41", "value": "41" },
+  { "country": "Austria", "code": "+43", "value": "43" },
+  { "country": "Sweden", "code": "+46", "value": "46" },
+  { "country": "Norway", "code": "+47", "value": "47" },
+  { "country": "Denmark", "code": "+45", "value": "45" },
+  { "country": "Poland", "code": "+48", "value": "48" },
+  { "country": "Russia", "code": "+7", "value": "7" },
+  { "country": "United States", "code": "+1", "value": "1" },
+  { "country": "Canada", "code": "+1", "value": "1" },
+  { "country": "Mexico", "code": "+52", "value": "52" },
+  { "country": "Brazil", "code": "+55", "value": "55" },
+  { "country": "Argentina", "code": "+54", "value": "54" },
+  { "country": "Chile", "code": "+56", "value": "56" },
+  { "country": "Colombia", "code": "+57", "value": "57" },
+  { "country": "Peru", "code": "+51", "value": "51" },
+  { "country": "Venezuela", "code": "+58", "value": "58" },
+  { "country": "Uruguay", "code": "+598", "value": "598" },
+  { "country": "Paraguay", "code": "+595", "value": "595" },
+  { "country": "Bolivia", "code": "+591", "value": "591" }
+];
+
+/**
+ * Populate country code dropdown
+ * @param {HTMLElement} selectElement - The select element to populate
+ * @param {string} defaultValue - Default country code value (default: "91" for India)
+ */
+function populateCountryCodeDropdown(selectElement, defaultValue = "91") {
+  if (!selectElement) return;
+
+  // Clear existing options
+  selectElement.innerHTML = '';
+
+  // Sort countries alphabetically by country name
+  const sortedCountries = [...countryCodes].sort((a, b) => {
+    return a.country.localeCompare(b.country);
+  });
+
+  // Add options with country name and code
+  sortedCountries.forEach(country => {
+    const option = document.createElement('option');
+    option.value = country.value;
+    // Display format: "Country Name +Code" (e.g., "India +91")
+    option.textContent = `${country.country} ${country.code}`;
+    option.setAttribute('data-code', country.code);
+    option.setAttribute('data-country', country.country);
+    selectElement.appendChild(option);
+  });
+
+  // Set default to India (+91)
+  selectElement.value = defaultValue;
+}
+
+/**
+ * Initialize country code dropdowns
+ */
+function initCountryCodeDropdowns() {
+  const callbackCountryCode = document.getElementById('callback-country-code');
+  const popupCountryCode = document.getElementById('popup-country-code');
+
+  if (callbackCountryCode) {
+    populateCountryCodeDropdown(callbackCountryCode, "91");
+  }
+
+  if (popupCountryCode) {
+    populateCountryCodeDropdown(popupCountryCode, "91");
+  }
+}
+
+/**
+ * Format phone number with country code
+ * @param {string} countryCodeValue - Country code value (e.g., "91")
+ * @param {string} phoneNumber - Phone number without country code
+ * @returns {string} Formatted phone number (e.g., "91-1234567890")
+ */
+function formatPhoneNumberWithCountryCode(countryCodeValue, phoneNumber) {
+  if (!phoneNumber) return '';
+  
+  // Remove any spaces, dashes, or special characters, but keep all digits
+  let cleanPhone = phoneNumber.replace(/[^\d]/g, '');
+  
+  // Remove leading country code if user accidentally included it
+  // Check if phone starts with the selected country code
+  if (cleanPhone.startsWith(countryCodeValue)) {
+    cleanPhone = cleanPhone.substring(countryCodeValue.length);
+  }
+  
+  // Format as "91-00000000" (numeric value only, no + sign)
+  return `${countryCodeValue}-${cleanPhone}`;
+}
+
+// Initialize country code dropdowns when DOM is ready
+if (document.readyState === 'loading') {
+  document.addEventListener('DOMContentLoaded', initCountryCodeDropdowns);
+} else {
+  initCountryCodeDropdowns();
+}
+
+/**
+ * Validate phone input to allow only numbers
+ * @param {HTMLElement} inputElement - The phone input element
+ */
+function validatePhoneInput(inputElement) {
+  if (!inputElement) return;
+
+  inputElement.addEventListener('input', function(e) {
+    // Remove any non-numeric characters
+    const value = e.target.value.replace(/[^\d]/g, '');
+    
+    // Update the input value with only numbers
+    if (e.target.value !== value) {
+      e.target.value = value;
+    }
+  });
+
+  // Also prevent paste of non-numeric characters
+  inputElement.addEventListener('paste', function(e) {
+    e.preventDefault();
+    const pastedText = (e.clipboardData || window.clipboardData).getData('text');
+    const numericOnly = pastedText.replace(/[^\d]/g, '');
+    
+    // Get current cursor position
+    const start = this.selectionStart;
+    const end = this.selectionEnd;
+    const currentValue = this.value;
+    
+    // Insert numeric text at cursor position
+    this.value = currentValue.substring(0, start) + numericOnly + currentValue.substring(end);
+    
+    // Set cursor position after inserted text
+    this.setSelectionRange(start + numericOnly.length, start + numericOnly.length);
+  });
+}
+
+/**
+ * Initialize phone input validation for all phone fields
+ */
+function initPhoneInputValidation() {
+  const callbackPhone = document.getElementById('callback-phone');
+  const popupPhone = document.getElementById('popup-phone');
+
+  if (callbackPhone) {
+    validatePhoneInput(callbackPhone);
+  }
+
+  if (popupPhone) {
+    validatePhoneInput(popupPhone);
+  }
+}
+
+// Initialize phone input validation when DOM is ready
+if (document.readyState === 'loading') {
+  document.addEventListener('DOMContentLoaded', initPhoneInputValidation);
+} else {
+  initPhoneInputValidation();
+}
+
+// ============================================
 // Form Submission Handler for Google Sheets
 // ============================================
 const GOOGLE_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbxbgQFvYkV6GbTJeA3KVeS-wPVQiuslC40zreZLHJKB2x7J-xpHvnP7elkqZSZTGjhA/exec';
@@ -1128,43 +1322,15 @@ async function submitToGoogleSheets(form, sheetName, options = {}) {
   // Validate inputs
   if (!form || !sheetName) {
     console.error('Form and sheetName are required');
-    if (options.onError) options.onError('Form and sheet name are required');
     return;
   }
 
   if (!GOOGLE_SCRIPT_URL) {
     console.error('Google Script URL not configured');
-    showErrorPopup('Form submission is not configured. Please contact the administrator.');
-    if (options.onError) options.onError('Google Script URL not configured');
     return;
   }
 
-  // Get submit button
-  const submitBtn = form.querySelector('button[type="submit"]');
-  const originalBtnText = submitBtn ? submitBtn.textContent : '';
-  const originalBtnBg = submitBtn ? submitBtn.style.backgroundColor : '';
-  const originalBtnHtml = submitBtn ? submitBtn.innerHTML : '';
-  const hasImage = submitBtn ? submitBtn.querySelector('img') : null;
-
-  // Disable submit button and show loading state
-  if (submitBtn) {
-    submitBtn.disabled = true;
-    // Only change text if button doesn't contain an image (for image buttons like footer arrow)
-    if (!hasImage) {
-      submitBtn.textContent = 'Submitting...';
-    } else {
-      // For image buttons, just change opacity
-      if (submitBtn.style) {
-        submitBtn.style.opacity = '0.5';
-      }
-    }
-    if (submitBtn.style) {
-      submitBtn.style.cursor = 'not-allowed';
-    }
-  }
-
-  // Show loader popup
-  showLoader();
+  // Silent submission - no UI changes, no error handling
 
   try {
     // Collect form data
@@ -1174,6 +1340,26 @@ async function submitToGoogleSheets(form, sheetName, options = {}) {
     // Convert FormData to object
     for (const [key, value] of formData.entries()) {
       data[key] = value;
+    }
+
+    // Format phone number with country code
+    // Check if this form has a country code selector
+    const countryCodeSelect = form.querySelector('select[name="CountryCode"]');
+    const phoneInput = form.querySelector('input[name="Phone"]');
+    
+    if (countryCodeSelect && phoneInput) {
+      const countryCodeValue = countryCodeSelect.value || "91";
+      // Get the full phone number value directly from the input
+      const phoneNumber = phoneInput.value.trim();
+      
+      // Only format if phone number exists
+      if (phoneNumber) {
+        // Format phone number as "91-00000000" (numeric value only, no + sign)
+        data.Phone = formatPhoneNumberWithCountryCode(countryCodeValue, phoneNumber);
+      }
+      
+      // Keep country code value separate (numeric value only, no + sign)
+      data.CountryCode = countryCodeValue;
     }
 
     // Add Date and Time in Indian format (IST - Indian Standard Time)
@@ -1260,86 +1446,14 @@ async function submitToGoogleSheets(form, sheetName, options = {}) {
     }
 
     if (!submissionSuccess) {
-      throw new Error('Form submission failed');
-    }
-
-    // Hide loader
-    hideLoader();
-
-    // Close enquiry popup if it's open (for enquiry form)
-    const isEnquiryForm = form.id === 'enquiry-form';
-    if (isEnquiryForm) {
-      const enquiryPopup = document.getElementById('enquiry-popup');
-      const popupContent = document.getElementById('popup-content');
-      if (enquiryPopup && !enquiryPopup.classList.contains('hidden')) {
-        // Close popup with animation
-        if (typeof gsap !== 'undefined' && popupContent) {
-          gsap.to(popupContent, {
-            scale: 0.9,
-            opacity: 0,
-            y: 50,
-            duration: 0.3,
-            ease: 'power2.in'
-          });
-          gsap.to(enquiryPopup, {
-            opacity: 0,
-            duration: 0.3,
-            ease: 'power2.in',
-            delay: 0.1,
-            onComplete: () => {
-              enquiryPopup.classList.remove('active', 'flex');
-              enquiryPopup.classList.add('hidden');
-              document.body.style.overflow = '';
-            }
-          });
-        } else {
-          // Fallback: just hide it
-          enquiryPopup.classList.add('hidden');
-          enquiryPopup.classList.remove('flex', 'active');
-          document.body.style.overflow = '';
-        }
-      }
-    }
-
-    // ALL forms navigate to thank you page after successful submission
-    // Small delay to allow any popups to close smoothly
-    setTimeout(() => {
-      window.location.href = 'thankyou.html';
-    }, isEnquiryForm ? 400 : 300);
-
-    // Call success callback
-    if (options.onSuccess) {
-      options.onSuccess(data);
+      console.error('Google Sheets submission failed silently');
+    } else {
+      console.log('Google Sheets submission successful (silent)');
     }
 
   } catch (error) {
-    console.error('Error submitting form to Google Sheets:', error);
-
-    // Hide loader
-    hideLoader();
-
-    // Show error popup
-    const errorMessage = error.message || 'There was an error submitting the form. Please try again later.';
-    showErrorPopup(errorMessage);
-
-    // Reset button immediately
-    if (submitBtn) {
-      // Restore button content (text or HTML with image)
-      if (hasImage && originalBtnHtml) {
-        submitBtn.innerHTML = originalBtnHtml;
-      } else {
-        submitBtn.textContent = originalBtnText;
-      }
-      submitBtn.style.backgroundColor = originalBtnBg;
-      submitBtn.disabled = false;
-      submitBtn.style.opacity = '1';
-      submitBtn.style.cursor = '';
-    }
-
-    // Call error callback
-    if (options.onError) {
-      options.onError(error);
-    }
+    // Silent error - just log it
+    console.error('Error submitting form to Google Sheets (silent):', error);
   }
 }
 
@@ -1375,6 +1489,281 @@ function initFormSubmission(formSelector, sheetName, options = {}) {
 }
 
 // ============================================
+// CRM Submission Functions
+// ============================================
+const CRM_BASE_URL = 'https://crm.fgpindia.in/WebCreate.aspx';
+const PROJECT_NAME = 'Fab Luxe Residences';
+
+/**
+ * Generate a unique lead ID
+ * @returns {string} Unique lead ID
+ */
+function generateUniqueId() {
+  const timestamp = Date.now();
+  const random = Math.floor(Math.random() * 10000);
+  return `LEAD-${timestamp}-${random}`;
+}
+
+/**
+ * Get clean URL without http:// and query string
+ * @returns {string} Clean URL
+ */
+function getCleanUrl() {
+  const url = window.location.href;
+  // Remove protocol (http:// or https://)
+  let cleanUrl = url.replace(/^https?:\/\//, '');
+  // Remove query string
+  cleanUrl = cleanUrl.split('?')[0];
+  return cleanUrl;
+}
+
+/**
+ * Extract UTM parameters from URL
+ * @returns {Object} Object with UTM parameters
+ */
+function getUtmParameters() {
+  const urlParams = new URLSearchParams(window.location.search);
+  return {
+    source: urlParams.get('utm_source') || '',
+    campaign: urlParams.get('utm_campaign') || '',
+    medium: urlParams.get('utm_medium') || '',
+    keyword: urlParams.get('utm_keyword') || ''
+  };
+}
+
+/**
+ * Get phone number without country code (for CRM @mob parameter)
+ * @param {string} phoneNumber - Full phone number
+ * @param {string} countryCodeValue - Country code value
+ * @returns {string} Phone number without country code
+ */
+function getPhoneWithoutCountryCode(phoneNumber, countryCodeValue) {
+  if (!phoneNumber) return '';
+  
+  // Remove all non-numeric characters
+  let cleanPhone = phoneNumber.replace(/[^\d]/g, '');
+  
+  // Remove country code if it's at the start
+  if (cleanPhone.startsWith(countryCodeValue)) {
+    cleanPhone = cleanPhone.substring(countryCodeValue.length);
+  }
+  
+  return cleanPhone;
+}
+
+/**
+ * Submit form data to CRM
+ * @param {HTMLFormElement} form - The form element
+ * @param {Object} formData - Form data object
+ */
+async function submitToCRM(form, formData) {
+  // Get submit button for UI control
+  const submitBtn = form.querySelector('button[type="submit"]');
+  const originalBtnText = submitBtn ? submitBtn.textContent : '';
+  const originalBtnBg = submitBtn ? submitBtn.style.backgroundColor : '';
+  const originalBtnHtml = submitBtn ? submitBtn.innerHTML : '';
+  const hasImage = submitBtn ? submitBtn.querySelector('img') : null;
+
+  // Disable submit button and show loading state
+  if (submitBtn) {
+    submitBtn.disabled = true;
+    if (!hasImage) {
+      submitBtn.textContent = 'Submitting...';
+    } else {
+      if (submitBtn.style) {
+        submitBtn.style.opacity = '0.5';
+      }
+    }
+    if (submitBtn.style) {
+      submitBtn.style.cursor = 'not-allowed';
+    }
+  }
+
+  // Show loader popup
+  showLoader();
+
+  try {
+    // Get country code and phone number
+    const countryCodeSelect = form.querySelector('select[name="CountryCode"]');
+    const phoneInput = form.querySelector('input[name="Phone"]');
+    
+    // Extract required fields
+    const isd = countryCodeSelect ? (countryCodeSelect.value || '91') : '91';
+    // Get phone number directly from input field (not from formData which might be formatted)
+    const phoneNumber = phoneInput ? phoneInput.value.trim() : '';
+    const mob = getPhoneWithoutCountryCode(phoneNumber, isd);
+    const email = formData.Email || '';
+    const name = (formData.Name || '').trim();
+    const city = formData.City || '';
+    const location = formData.Location || '';
+    const project = PROJECT_NAME;
+    const remark = formData.Message || '';
+    const uniqueId = generateUniqueId();
+    const url = getCleanUrl();
+    const utmParams = getUtmParameters();
+
+    // Debug logging
+    console.log('CRM Submission Data:', {
+      isd,
+      mob,
+      phoneNumber,
+      email,
+      name,
+      project,
+      uniqueId,
+      hasPhoneInput: !!phoneInput,
+      phoneInputValue: phoneInput ? phoneInput.value : 'N/A'
+    });
+
+    // Validate mandatory fields
+    if (!isd || !mob || !project || !uniqueId) {
+      console.warn('CRM submission skipped: Missing mandatory fields', {
+        isd: !!isd,
+        mob: !!mob,
+        mobValue: mob,
+        project: !!project,
+        uniqueId: !!uniqueId,
+        phoneNumber: phoneNumber
+      });
+      return;
+    }
+    
+    // Additional validation: ensure mob has at least some digits
+    if (mob.length === 0) {
+      console.warn('CRM submission skipped: Mobile number is empty after processing');
+      return;
+    }
+
+    // Build CRM URL with parameters
+    const crmParams = new URLSearchParams({
+      UID: 'fourqt',
+      PWD: 'wn9mxO76f34=',
+      Channel: 'MS',
+      Src: 'Website',
+      ISD: isd,
+      Mob: mob,
+      Email: email,
+      name: name,
+      City: city,
+      Location: location,
+      Project: project,
+      Remark: remark,
+      url: url,
+      UniqueId: 0,
+      fld1: utmParams.source,
+      fld2: utmParams.campaign,
+      fld3: utmParams.medium,
+      fld4: utmParams.keyword
+    });
+
+    // Build the complete CRM URL
+    const crmUrl = `${CRM_BASE_URL}?${crmParams.toString()}`;
+    
+    console.log('CRM URL:', crmUrl);
+    console.log('Sending data to CRM...');
+    console.log('Data being sent:', {
+      ISD: isd,
+      Mob: mob,
+      Email: email,
+      Name: name,
+      Project: project,
+      UniqueId: uniqueId
+    });
+
+    // Simple fetch request
+    const response = await fetch(crmUrl, {
+      method: 'GET'
+    });
+    
+    console.log('CRM Response:', response);
+    console.log('Status:', response.status);
+    console.log('Status Text:', response.statusText);
+    console.log('OK:', response.ok);
+    
+    // Check if request was successful (status 200 or 0 for no-cors)
+    if (response.status === 200 || response.status === 0) {
+      // Try to read response
+      try {
+        const responseText = await response.text();
+        console.log('Response Text:', responseText);
+      } catch (e) {
+        console.log('Cannot read response (normal for cross-origin)');
+      }
+      
+      // Hide loader
+      hideLoader();
+      
+      // Close enquiry popup if it's open (for enquiry form)
+      const isEnquiryForm = form.id === 'enquiry-form';
+      if (isEnquiryForm) {
+        const enquiryPopup = document.getElementById('enquiry-popup');
+        const popupContent = document.getElementById('popup-content');
+        if (enquiryPopup && !enquiryPopup.classList.contains('hidden')) {
+          // Close popup with animation
+          if (typeof gsap !== 'undefined' && popupContent) {
+            gsap.to(popupContent, {
+              scale: 0.9,
+              opacity: 0,
+              y: 50,
+              duration: 0.3,
+              ease: 'power2.in'
+            });
+            gsap.to(enquiryPopup, {
+              opacity: 0,
+              duration: 0.3,
+              ease: 'power2.in',
+              delay: 0.1,
+              onComplete: () => {
+                enquiryPopup.classList.remove('active', 'flex');
+                enquiryPopup.classList.add('hidden');
+                document.body.style.overflow = '';
+              }
+            });
+          } else {
+            // Fallback: just hide it
+            enquiryPopup.classList.add('hidden');
+            enquiryPopup.classList.remove('flex', 'active');
+            document.body.style.overflow = '';
+          }
+        }
+      }
+      
+      // Navigate to thank you page after successful submission
+      setTimeout(() => {
+        window.location.href = 'thankyou.html';
+      }, isEnquiryForm ? 400 : 300);
+      
+      console.log('✅ CRM data sent successfully!');
+    } else {
+      throw new Error(`CRM submission failed with status: ${response.status}`);
+    }
+
+  } catch (error) {
+    console.error('Error submitting to CRM:', error);
+    
+    // Hide loader
+    hideLoader();
+    
+    // Show error popup
+    const errorMessage = error.message || 'There was an error submitting the form. Please try again later.';
+    showErrorPopup(errorMessage);
+    
+    // Reset button
+    if (submitBtn) {
+      if (hasImage && originalBtnHtml) {
+        submitBtn.innerHTML = originalBtnHtml;
+      } else {
+        submitBtn.textContent = originalBtnText;
+      }
+      submitBtn.style.backgroundColor = originalBtnBg;
+      submitBtn.disabled = false;
+      submitBtn.style.opacity = '1';
+      submitBtn.style.cursor = '';
+    }
+  }
+}
+
+// ============================================
 // Initialize All Forms
 // ============================================
 
@@ -1392,14 +1781,33 @@ function initEnquiryForm() {
       return;
     }
 
-    // Submit to Google Sheets with sheet name "Enquiry"
-    await submitToGoogleSheets(enquiryForm, 'Enquiry', {
-      onSuccess: (data) => {
-        console.log('Enquiry form submitted successfully:', data);
-      },
-      onError: (error) => {
-        console.error('Error submitting enquiry form:', error);
+    // Collect form data for CRM
+    const formData = new FormData(enquiryForm);
+    const data = {};
+    for (const [key, value] of formData.entries()) {
+      data[key] = value;
+    }
+
+    // Format phone number with country code for Google Sheets
+    const countryCodeSelect = enquiryForm.querySelector('select[name="CountryCode"]');
+    const phoneInput = enquiryForm.querySelector('input[name="Phone"]');
+    
+    if (countryCodeSelect && phoneInput && data.Phone) {
+      const countryCodeValue = countryCodeSelect.value || "91";
+      const phoneNumber = phoneInput.value.trim();
+      
+      if (phoneNumber) {
+        data.Phone = formatPhoneNumberWithCountryCode(countryCodeValue, phoneNumber);
       }
+      data.CountryCode = countryCodeValue;
+    }
+
+    // Submit to CRM first (this controls UI - loader, errors, navigation)
+    await submitToCRM(enquiryForm, data);
+
+    // Submit to Google Sheets silently in background (no UI changes)
+    submitToGoogleSheets(enquiryForm, 'Enquiry').catch(err => {
+      console.error('Silent Google Sheets submission error:', err);
     });
   });
 }
@@ -1418,14 +1826,33 @@ function initCallbackForm() {
       return;
     }
 
-    // Submit to Google Sheets with sheet name "Callback"
-    await submitToGoogleSheets(callbackForm, 'Callback', {
-      onSuccess: (data) => {
-        console.log('Callback form submitted successfully:', data);
-      },
-      onError: (error) => {
-        console.error('Error submitting callback form:', error);
+    // Collect form data for CRM
+    const formData = new FormData(callbackForm);
+    const data = {};
+    for (const [key, value] of formData.entries()) {
+      data[key] = value;
+    }
+
+    // Format phone number with country code for Google Sheets
+    const countryCodeSelect = callbackForm.querySelector('select[name="CountryCode"]');
+    const phoneInput = callbackForm.querySelector('input[name="Phone"]');
+    
+    if (countryCodeSelect && phoneInput && data.Phone) {
+      const countryCodeValue = countryCodeSelect.value || "91";
+      const phoneNumber = phoneInput.value.trim();
+      
+      if (phoneNumber) {
+        data.Phone = formatPhoneNumberWithCountryCode(countryCodeValue, phoneNumber);
       }
+      data.CountryCode = countryCodeValue;
+    }
+
+    // Submit to CRM first (this controls UI - loader, errors, navigation)
+    await submitToCRM(callbackForm, data);
+
+    // Submit to Google Sheets silently in background (no UI changes)
+    submitToGoogleSheets(callbackForm, 'Callback').catch(err => {
+      console.error('Silent Google Sheets submission error:', err);
     });
   });
 }
@@ -1510,5 +1937,5 @@ if (document.readyState === 'loading') {
 }
 
 function handleLocationClick() {
-  window.open('https://maps.app.goo.gl/7veC7zqEsCuR7uLJ6', '_blank');
+  window.open('https://maps.app.goo.gl/gasSXMpq3Bdt2Mbs7', '_blank');
 }
